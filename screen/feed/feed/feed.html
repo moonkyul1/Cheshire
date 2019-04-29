@@ -4,21 +4,36 @@
 <body>
     <div id="div_root">
         <div id="div_main">
-
+            <button id="searchBtn">Do Search</button>
+            <input type="text" id="searchInput" placeholder="검색" size="40">
+            <button id="namingBtn" onclick="location.href='../naming/naming.html'">Naming Center</button>
         </div>
-        <div id="div_sub">
-
+        <div id="container">
+            <div class="feed">
+                    <h3 class="name">이름</h3>
+                    <div class="date">날짜</div>
+                    <p class="content">글 내용</p>
+                    <div class="accessory">
+                        <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px"> Comments
+                    </div>
+                </div>
+                <div class="feed">
+                    <h3 class="name">이름</h3>
+                    <div class="date">날짜</div>
+                    <p class="content">글 내용</p>
+                    <div class="accessory">
+                        <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px"> Comments
+                    </div>
+                </div>
         </div>
-        <table>
-            <tr>
-                <td class='but'><input type="button" value="확인" id="button1" onclick="location.href='./feed.html'"></td>
-                <td class='but'><input type="button" value="확인" id="button1" onclick="location.href='../../gift/reward/reward.html'"></td>
-                <td class='but'><input type="button" value="확인" id="button1" onclick="location.href='../../upload/main/mainupload.html'"></td>
-                <td class='but'><input type="button" value="확인" id="button1" onclick="location.href='../../notification/notification.html'"></td>
-                <td class='but'><input type="button" value="확인" id="button1" onclick="location.href='../../profile/user/userprofile.html'"></td>
-            </tr>
-        </table>
-        
+        <div id="footer">
+            <div id="tab1" onclick="location.href='./feed.html'">tab1</div>
+            <div id="tab2" onclick="location.href='../../gift/reward/reward.html'">tab2</div>
+            <div id="tab3">tab3</div>
+            <div id="tab4">tab4</div>
+            <div id="tab5">tab5</div>
+        </div>
+       
     </div>
 
     
