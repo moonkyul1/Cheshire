@@ -40,8 +40,8 @@
 
 #container{
     padding-top:155px;
+    padding-bottom:155px;
     width:100%;
-    height:1000px;
     background-color: #d7d8dc;
 }
 
@@ -68,6 +68,7 @@
 }
 
 .name{
+    margin-left:36px;
     text-align:center;
     font-size:48px;
 }
@@ -75,7 +76,7 @@
 .archive{
     float:right;
     margin-top:24px;
-    margin-right:5px;
+    margin-right:36px;
     width :72px;
     height:72px;
 }
@@ -112,9 +113,8 @@
 }
 
 #like{
-    float:right;
     margin-top:24px;
-    margin-right:5px;
+    margin-left:36px;
     width :72px;
     height:72px;
 }
