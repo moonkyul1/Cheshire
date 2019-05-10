@@ -1,24 +1,42 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
-    <link href="feed.css" rel="stylesheet" />
+    <link href="userprofile.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Cheshire</title>
 </head>
 <body>
   <div id="div_root">
     <div id="div_main">
-      <img id="searchBtn" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
+      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
+      <div class="name"> @sallylovescats </div>
+      <img id="archiveBtn" src=../../../image/icon/bookmark.png onclick="location.href='../archive/archive.html'">
     </div>
     <div id="container">
+      <div class="displays">
+        <img id="profile" src=../../../image/picture/sally.png></img>
+        <div class="stats">
+          <div class="stat">123</div>
+          <div class="stat">456</div>
+          <div class="stat">789</div>
+          <div class="stattext">yeet</div>
+          <div class="stattext">yeet2</div>
+          <div class="stattext">yeet3</div>
+        </div>
+      </div>
     </div>
     <div id="footer">
+        <div id="tab" onclick="location.href='./feed.html'"><img src=../../../image/icon/feed_selected.png></div>
+        <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
+        <div id="tab" onclick="location.href='../../upload/main/mainupload.html'"><img src=../../../image/icon/upload.png></div>
+        <div id="tab" onclick="location.href='../../notification/notification.html'"><img src=../../../image/icon/noti.png></div>
+        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile.png></div>
     </div>
 
   </div>
 
   <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
   <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script src="./feed.js"></script>
+  <script src="./userprofile.js"></script>
 
 </body>
