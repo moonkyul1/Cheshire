@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <head>
+    
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
     <link href="feed.css" rel="stylesheet" />
@@ -13,25 +15,10 @@
             <img id="namingBtn" src=../../../image/icon/scope_selected.png onclick="location.href='../naming/naming.html'">
         </div>
         <div id="container">
-            <div class="feed">
-                <div class=header>
-                    <img class="img" src=../../../image/icon/profile.png>
-                    <div class="name">catname</div>
-                    <img class="more" src=../../../image/icon/menu.png>
-                    <img class="archive" src=../../../image/icon/bookmark.png>    
-                </div>
-                <div class="content" ><img id="contentid" src=../../../image/icon/cancel.png></div>
-                <div class="accessory">
-                    <img id="comment" src=../../../image/icon/message.png>
-                    <img id="like" src=../../../image/icon/heart.png onclick=like(this)>
-                    <img id="feedgift" src=../../../image/icon/cf.png>
-                </div>
-            </div>
-
-
+            
         </div>
         <div id="footer">
-            <div id="tab" onclick="location.href='./feed.html'"><img src=../../../image/icon/feed_selected.png></div>
+            <div id="tab" onclick="scrollUp();"><img src=../../../image/icon/feed_selected.png></div>
             <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
             <div id="tab" onclick="location.href='../../upload/main/mainupload.html'"><img src=../../../image/icon/upload.png></div>
             <div id="tab" onclick="location.href='../../notification/notification.html'"><img src=../../../image/icon/noti.png></div>
