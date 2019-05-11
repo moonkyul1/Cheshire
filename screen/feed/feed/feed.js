@@ -40,7 +40,7 @@ var feedstring="<div class=\"feed\">\
 <img class=\"more\" src=../../../image/icon/menu.png>\
 <img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
-<div class=\"content\" ><img id=\"contentid\" src="+picture+"></div>\
+<div class=\"content\" ><img id=\"contentid\" src="+picture+" onclick=\"location.href=\'../post/post.html\'\"></div>\
 <div class=\"accessory\">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
@@ -107,6 +107,41 @@ function onScroll(){
     feedgo(10);
   } 
 }
+
+
+
+$(document).on("scrollstop", function (e) {
+
+  /* active page */
+var activePage = $.mobile.pageContainer.pagecontainer("getActivePage"),
+
+  /* window's scrollTop() */
+  scrolled = $(window).scrollTop(),
+
+  /* viewport */
+  screenHeight = $.mobile.getScreenHeight(),
+
+  /* content div height within active page */
+  contentHeight = $(".ui-content", activePage).outerHeight(),
+
+  /* header's height within active page (remove -1 for unfixed) */
+  header = $(".ui-header", activePage).outerHeight() - 1,
+
+  /* footer's height within active page (remove -1 for unfixed) */
+  footer = $(".ui-footer", activePage).outerHeight() - 1,
+
+  /* total height to scroll */
+  scrollEnd = contentHeight - screenHeight + header + footer;
+
+/* if total scrolled value is equal or greater
+ than total height of content div (total scroll)
+ and active page is the target page (pageX not any other page)
+ call addMore() function */
+if (activePage[0].id == "pageX" && scrolled+10 >= scrollEnd) {
+  feedgo(10);
+}
+});
+
 
 
 function scrollUp()
