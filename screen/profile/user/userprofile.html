@@ -1,17 +1,16 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="userprofile.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Cheshire</title>
 </head>
 <body>
   <div id="div_root">
-    <div id="div_main">
-      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
-      <div class="name"> @sallylovescats </div>
-      <img id="archiveBtn" src=../../../image/icon/bookmark.png onclick="location.href='../archive/archive.html'">
-    </div>
+
     <div id="container">
       <div class="displays">
         <img id="profile" src=../../../image/picture/sally.png></img>
@@ -23,8 +22,128 @@
           <div class="stattext">yeet2</div>
           <div class="stattext">yeet3</div>
         </div>
+        <div>
+          <button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button>
+        </div>
+      </div>
+      <div class="userfeed">
+        <!-- one row -->
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
+
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
+
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
+
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
+
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
+
+        <div class="row row-no-gutters">
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div id="div_main">
+      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
+      <div class="name"> @sallylovescats </div>
+      <img id="archiveBtn" src=../../../image/icon/bookmark.png onclick="location.href='./archive/archive.html'">
+    </div>
+    
     <div id="footer">
         <div id="tab" onclick="location.href='./feed.html'"><img src=../../../image/icon/feed_selected.png></div>
         <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
