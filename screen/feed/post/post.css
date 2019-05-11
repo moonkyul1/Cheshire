@@ -1,0 +1,180 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+#div_root{
+    margin:auto;
+    width:1080px;
+    font-size: 36px;
+    background-color: #F0F0F0;
+}
+
+#div_main{
+    width:1080px;
+    position:fixed;
+    top:0;
+    height:160px;
+    text-align:center;
+    background-color: white;
+}
+
+#feedcontainer{
+    padding-top:155px;
+    width:100%;
+    background-color: #F0F0F0;
+}
+
+#goBackBtn{
+    float:left;
+    margin-top:47px;
+    margin-left:47px;
+    width:66px;
+    height:66px;
+}
+
+.feed {
+    background-color: #ffffff;
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
+    margin: 7px 0;
+    padding: 12px;
+}
+
+.tabtitle{
+  margin-left: 36px;
+}
+
+.sidewrap{
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.username{
+  color: #77BBFF;
+  font-weight: bold;
+}
+
+.header{
+    height:120px;
+}
+
+.img{
+    float:left;
+    margin-top:24px;
+    margin-bottom:24px;
+    margin-left:36px;
+    width :72px;
+    height:72px;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+.name{
+    float:left;
+    margin-top:24px;
+    margin-left:36px;
+    margin-bottom:24px;
+    font-family:Segoe UI;
+    font-weight:bold;
+    font-size:48px;
+}
+
+.archive{
+    float:right;
+    margin-top:24px;
+    margin-bottom:24px;
+    margin-right:36px;
+    width :72px;
+    height:72px;
+}
+
+.more{
+    float:right;
+    margin-top:24px;
+    margin-bottom:24px;
+    margin-right:36px;
+    width :72px;
+    height:72px;
+}
+
+.content {
+    margin-top: 5px;
+}
+
+#contentid{
+    width:100%;
+    height:607px;
+    object-fit: over;
+}
+
+.accessory {
+    border-top: 1px solid #eee;
+    height:120px;
+    color: #999;
+    font-size: 14px;
+}
+
+#commentIcon{
+    margin-top:24px;
+    margin-left:36px;
+    width :72px;
+    height:72px;
+}
+
+#like{
+    margin-top:24px;
+    margin-left:36px;
+    width :72px;
+    height:72px;
+}
+
+#feedgift{
+    float:right;
+    margin-top:24px;
+    margin-right:36px;
+    width :72px;
+    height:72px;
+}
+
+.tagslist{
+
+}
+
+.tag{
+  margin-right: 20px;
+}
+
+.tagname{
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-weight: normal;
+  float:right;
+}
+
+.comments{
+ padding-bottom: 200px;
+ background-color: #F0F0F0;
+}
+
+.comment{
+  margin-bottom: 12px;
+}
+
+#footer {
+    width:1080px;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #cccccc;
+    background-color: #ffffff;
+    height: 160px;
+    background-color: #fafafa;
+    text-align: center;
+    padding-top: 30px;
+}
+#tab{
+    float: left;
+    margin-top:44px;
+    margin-bottom:44px;
+    width: 20%;
+}
