@@ -55,10 +55,7 @@ body {
 
 .dummy{
   /*for some reason the class at this position does not work*/
-  height:300px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #c0c0c0;
-  padding: 12px;
+  background-color: #ff0000;
 }
 
 .displays {
@@ -104,7 +101,8 @@ body {
 }
 
 .userfeed{
-
+  background-color: #d7d8dc;
+  padding-bottom: 300px;
 }
 
 .feedImg{
@@ -117,67 +115,6 @@ body {
 .col-sm-4{
   text-align: center;
 }
-
-.header{
-    height:100px;
-}
-
-.archive{
-    float:right;
-    margin-top:24px;
-    margin-right:5px;
-    width :72px;
-    height:72px;
-}
-
-.more{
-    float:right;
-    margin-top:24px;
-    margin-right:36px;
-    width :72px;
-    height:72px;
-}
-
-.content {
-    margin-top: 5px;
-}
-
-#contentid{
-    width:100%;
-    height: 607px
-}
-.accessory {
-    border-top: 1px solid #eee;
-    height:120px;
-    padding-top:10px;
-    margin-top:10px;
-    color: #999;
-    font-size: 14px;
-}
-
-#comment{
-    margin-top:24px;
-    margin-left:36px;
-    width :72px;
-    height:72px;
-}
-
-#like{
-    float:right;
-    margin-top:24px;
-    margin-right:5px;
-    width :72px;
-    height:72px;
-}
-
-#feedgift{
-    float:right;
-    margin-top:24px;
-    margin-right:36px;
-    width :72px;
-    height:72px;
-}
-
 
 #footer {
     width:1080px;
