@@ -1,9 +1,9 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-    <meta name="viewport" content="width=1080, user-scalable=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="userprofile.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Profile</title>
@@ -11,7 +11,7 @@
 <body>
   <div id="div_root">
 
-    <div id="container">
+    <div id="feedcontainer">
       <div class="displays">
         <img id="profile" src=../../../image/picture/sally.png></img>
         <div class="stats">
@@ -26,110 +26,115 @@
           <button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button>
         </div>
       </div>
-      <div class="userfeed">
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
+      <div class="userfeed container">
+        <div class="row no-gutters">
+          <div class="col-sm"><img src=../../../image/picture/cat1.png class="feedImg"></div>
+          <div class="col-sm"><img src=../../../image/picture/cat1.png class="feedImg"></div>
+          <div class="col-sm"><img src=../../../image/picture/cat1.png class="feedImg"></div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat1.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat2.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
+            <a href="#">
+              <img src=../../../image/picture/cat3.png class="feedImg">
+            </a>
+          </div>
+
+        </div>
+        <!-- one row no-gutters -->
+        <div class="row no-gutters">
+          <div class="col-sm">
+            <a href="#">
+              <img src=../../../image/picture/cat1.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm">
+            <a href="#">
+              <img src=../../../image/picture/cat2.png class="feedImg">
+            </a>
+          </div>
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat3.png class="feedImg">
             </a>
           </div>
         </div>
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
+        <!-- one row no-gutters -->
+        <div class="row no-gutters">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat1.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat2.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat3.png class="feedImg">
             </a>
           </div>
         </div>
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
+        <!-- one row no-gutters -->
+        <div class="row no-gutters">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat1.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat2.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat3.png class="feedImg">
             </a>
           </div>
         </div>
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
+        <!-- one row no-gutters -->
+        <div class="row no-gutters">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat1.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat2.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat3.png class="feedImg">
             </a>
           </div>
         </div>
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
+        <!-- one row no-gutters -->
+        <div class="row no-gutters">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat1.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat2.png class="feedImg">
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row row-no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
+          <div class="col-sm">
             <a href="#">
               <img src=../../../image/picture/cat3.png class="feedImg">
             </a>
