@@ -110,8 +110,8 @@ function onScroll(){
     //hearder seen
   }  
   
-  if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
-    //feedgo(10);
+  if (Math.round( $(window).scrollTop()+300) == $(document).height() - $(window).height()) {
+    feedgo(10);
   } 
 }
 
