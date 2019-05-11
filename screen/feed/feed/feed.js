@@ -38,13 +38,13 @@ var feedstring="<div class=\"feed\">\
 <img class=\"img\" src="+img+">\
 <div class=\"name\">"+name+"</div>\
 <img class=\"more\" src=../../../image/icon/menu.png>\
-<img class=\"archive\" src=../../../image/icon/bookmark.png>\
+<img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
 <div class=\"content\" ><img id=\"contentid\" src="+picture+"></div>\
 <div class=\"accessory\">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
-<img id=\"feedgift\" src=../../../image/icon/cf.png>\
+<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"location.href=\'../../gift/reward/reward.html\'\">\
 </div>\
 </div>";
 return feedstring;
@@ -95,8 +95,10 @@ function writeToDatabase(catfile,name){
 }
 
 
-$(window).scroll(function() {
-        
+$(document.body).on('touchmove', onScroll); // for mobile
+$(window).on('scroll', onScroll); 
+
+function onScroll(){
   if($(window).scrollTop() == 0){
     //hearder seen
   }  
@@ -104,7 +106,8 @@ $(window).scroll(function() {
   if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
     feedgo(10);
   } 
-});
+}
+
 
 function scrollUp()
 {
