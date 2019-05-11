@@ -27,22 +27,6 @@ function like(Obj){
         console.log(img1)
     }
 }
-
-  function writeToDatabasewithoutundo(comment){
-    var newKey = firebase.database().ref('/pr3/').push();
-    var kk =String(newKey.key);
-    var ch1= comment.substring(0,comment.indexOf('deleteBase'));
-    var ch2=comment.substring(comment.indexOf("deleteLine"),);
-    var com2=ch1+"deleteBase(\'"+kk+ "\');" +ch2;
-    $("#here").prepend(com2);  
-    newKey.set({
-      //location of dictionary
-      row: com2
-    });
-  
-  }
-
-
  
 function makefeed(img,name,picture){
 var feedstring="<div class=\"feed\">\

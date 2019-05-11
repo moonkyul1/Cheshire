@@ -1,0 +1,160 @@
+#div_root{
+    margin:auto;
+    width:1080px;
+}
+
+#div_main{
+    width:1080px;
+    position:fixed;
+    top:0;
+    height:120px;
+    text-align:center;
+    background-color: white;
+}
+
+#back{
+    float:left;
+    margin-top:24px;
+    margin-left:36px;
+    width:72px;
+    height:72px;
+}
+#backname{
+    float:left;
+    margin-left:373px;
+    margin-top:39px;
+    height:43px;
+    width:118px;
+    font-size:36px;
+    font-weight:bold;
+}
+
+#container{
+    padding-top:160px;
+    width:100%;
+    height:1760px;
+    background-color: #F0F0F0;
+}
+
+#tags{
+    width:100%;
+    height:120px;
+    background-color: #FFFFFF;
+}
+
+#taga{
+    width:auto;
+    position: relative;
+    float:left;
+    margin-left:36px;
+    margin-top:24px;
+    height:72px;
+    border:0;
+    outline:0;
+    border-radius:36px;
+    background-color:#7B7B7B;
+}
+
+#tag1{
+    display:inline-block;
+    float:left;
+    height:36px;
+    width:36px;
+    margin-top:18px;
+    margin-left:18px;
+}
+
+#tag2{
+    display:inline-block;
+    float:left;
+    height:36px;
+    width:36px;
+    margin-top:12px;
+    margin-left:8px;
+    margin-right:20px;
+    color:white;
+}
+
+#tag3{
+    display:inline-block;
+    float:right;
+    height:36px;
+    width:36px;
+    margin-left:8px;
+    margin-top:18px;
+    margin-right:18px;
+}
+
+
+#addtag{
+    margin-top:6px;
+    background-color:#FFFFFF;
+    height:160px;
+    width:100%;
+}
+
+#tag{
+    float:left;
+    width:72px;
+    height:72px;
+    margin-top:38px;
+    margin-left:72px;
+    
+}
+
+input::placeholder {
+    color: #BCBCBC;
+}
+
+#tagname{
+    float:left;
+    margin-top:40px;
+    margin-left:72px;
+    height:70px;
+    font-size:59px;
+    color:#BCBCBC;
+    border:0;
+    outline:0;
+}
+
+
+#addcaption{
+    margin-top:40px;
+    background-color:#FFFFFF;
+    height:160px;
+    width:100%;
+}
+
+#caption{
+    float:left;
+    width:72px;
+    height:72px;
+    margin-top:44px;
+    margin-left:72px;
+    
+}
+
+#captionname{
+    float:left;
+    margin-top:45px;
+    margin-left:72px;
+    height:70px;
+    font-size:59px;
+    color:#BCBCBC;
+    border:0;
+    outline:0;
+}
+
+#next{
+    float:right;
+    margin-top:1110px;
+    margin-right:60px;
+}
+
+#nextbtn{
+    width:332px;
+    height:102px;
+    background-color:#7B7B7B;
+    color:#FFFFFF;
+    font-size:40px;
+}
