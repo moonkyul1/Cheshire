@@ -2,11 +2,6 @@
 // has finished loading in the browser.
 
 
-function hello() {
-  return "Hello";
-}
-
-
 var config = {
     apiKey: "AIzaSyAqBEOGJ6QCmFO7ff6sP0pVmpJoWgYnl1U",
     authDomain: "cs374-2e397.firebaseapp.com",
@@ -40,7 +35,7 @@ var feedstring="<div class=\"feed\">\
 <img class=\"more\" src=../../../image/icon/menu.png>\
 <img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
-<div class=\"content\" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\" alt="+altkey+"></div>\
+<div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
@@ -94,7 +89,7 @@ function writeToDatabase(catfile,name){
 function save(Obj){
   firebase.database().ref('/save/').remove();
   var newKey = firebase.database().ref('/save/').push();
-  var akey = $(Obj).attr("alt");
+  var akey= $(Obj).parent().attr("id");
   newKey.set({
     key: akey
   });
