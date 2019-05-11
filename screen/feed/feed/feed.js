@@ -25,12 +25,10 @@ function like(Obj){
     if(img1.indexOf('_selected')==-1){
         img1=img1.replace('.png','_selected.png');
         $(Obj).attr("src",img1)
-        console.log(img1)
     }
     else{
         img1=img1.replace('_selected.png','.png');
         $(Obj).attr("src",img1)
-        console.log(img1)
     }
 }
  
@@ -63,11 +61,9 @@ return feedstring;
     */
     return firebase.database().ref('/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      //console.log(myValue)
       var keyList = Object.keys(myValue);
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
-        console.log(String(currentKey));
         $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture, currentKey));
       }
     });
@@ -93,11 +89,19 @@ function writeToDatabase(catfile,name){
     name: name,
     picture: picture
   });
+}
 
+function save(Obj){
+  firebase.database().ref('/save/').remove();
+  var newKey = firebase.database().ref('/save/').push();
+  var akey = $(Obj).attr("alt");
+  newKey.set({
+    key: akey
+  });
 }
 
 
-$(document.body).on('touchstop', onScrollm); // for mobile
+$(document.body).on('touchstop', onScroll); // for mobile
 $(window).on('scroll', onScroll); 
 
 function onScroll(){
@@ -110,26 +114,10 @@ function onScroll(){
     //hearder seen
   }  
   
-  if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
+  if (Math.round( b-$(window).scrollTop()) <= 400) {
     feedgo(10);
   } 
 }
-
-function onScrollm(){
-  var b = $(document).height() - $(window).height();
-  var a = ("st=" + $(window).scrollTop() + " he="+$(document).height()+ " wd="+ $(window).height() + " re="+b) ;
-  var tagname= document.getElementById("searchInput");
-  tagname.value=a;
-
-  if($(window).scrollTop() == 0){
-    //hearder seen
-  }  
-  
-  if (Math.round( $(window).scrollTop())-b <= 400) {
-    feedgo(10);
-  } 
-}
-
 
 
 function scrollUp()
