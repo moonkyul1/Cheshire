@@ -1,6 +1,10 @@
 // This allows the Javascript code inside this block to only run when the page
 // has finished loading in the browser.
 
+
+
+
+
 var config = {
     apiKey: "AIzaSyAqBEOGJ6QCmFO7ff6sP0pVmpJoWgYnl1U",
     authDomain: "cs374-2e397.firebaseapp.com",
@@ -62,7 +66,6 @@ function getRandomInt(min, max) {
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
         //console.log(keyList)
-        
         $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture))
       }
     });
@@ -94,17 +97,16 @@ function writeToDatabase(catfile,name){
 
 $(window).scroll(function() {
         
-        
-var scrolltop = $(document).scrollTop();
-var height = $(document).height();
-var height_win = $(window).height();
+  if($(window).scrollTop() == 0){
+    //hearder seen
+  }  
 
-if($(window).scrollTop() == 0){
-  
-}  
-
-if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
-  
-  feedgo(10);
-} 
+  if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
+    feedgo(10);
+  } 
 });
+
+function scrollUp()
+{
+  window.scrollTo(0,0)
+}
