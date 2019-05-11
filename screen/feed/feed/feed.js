@@ -2,7 +2,9 @@
 // has finished loading in the browser.
 
 
-
+function hello() {
+  return "Hello";
+}
 
 
 var config = {
@@ -95,52 +97,24 @@ function writeToDatabase(catfile,name){
 }
 
 
-$(document.body).on('touchmove', onScroll); // for mobile
+$(document.body).on('touchstop', onScroll); // for mobile
 $(window).on('scroll', onScroll); 
 
 function onScroll(){
+  var b = $(document).height() - $(window).height();
+  var a = ("st=" + $(window).scrollTop() + " he="+$(document).height()+ " wd="+ $(window).height() + " re="+b) ;
+  var tagname= document.getElementById("searchInput");
+  tagname.value=a;
+
   if($(window).scrollTop() == 0){
     //hearder seen
   }  
-
+  
   if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
-    feedgo(10);
+    //feedgo(10);
   } 
 }
 
-
-
-$(document).on("scrollstop", function (e) {
-
-  /* active page */
-var activePage = $.mobile.pageContainer.pagecontainer("getActivePage"),
-
-  /* window's scrollTop() */
-  scrolled = $(window).scrollTop(),
-
-  /* viewport */
-  screenHeight = $.mobile.getScreenHeight(),
-
-  /* content div height within active page */
-  contentHeight = $(".ui-content", activePage).outerHeight(),
-
-  /* header's height within active page (remove -1 for unfixed) */
-  header = $(".ui-header", activePage).outerHeight() - 1,
-
-  /* footer's height within active page (remove -1 for unfixed) */
-  footer = $(".ui-footer", activePage).outerHeight() - 1,
-
-  /* total height to scroll */
-  scrollEnd = contentHeight - screenHeight + header + footer;
-
-/* if total scrolled value is equal or greater
- than total height of content div (total scroll)
- and active page is the target page (pageX not any other page)
- call addMore() function */
-if (activePage[0].id == "pageX" && scrolled+10 >= scrollEnd) {
-  feedgo(10);
-}
-});
 
 
 
