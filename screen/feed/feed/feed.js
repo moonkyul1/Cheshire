@@ -34,7 +34,8 @@ function like(Obj){
     }
 }
  
-function makefeed(img,name,picture){
+function makefeed(img,name,picture,key){
+  console.log("here is " + key)
 var feedstring="<div class=\"feed\">\
 <div class=header>\
 <img class=\"img\" src="+img+">\
@@ -42,7 +43,7 @@ var feedstring="<div class=\"feed\">\
 <img class=\"more\" src=../../../image/icon/menu.png>\
 <img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
-<div class=\"content\" ><img id=\"contentid\" src="+picture+" onclick=\"location.href=\'../post/post.html\'\"></div>\
+<div class=\"content\" ><img id=\"contentid\" src="+picture+" onclick=\"location.href=\'../post/post.html\'\" alt="+key+"></div>\
 <div class=\"accessory\">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
@@ -52,9 +53,9 @@ var feedstring="<div class=\"feed\">\
 return feedstring;
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   function readFromDatabase(num) {
     /*
@@ -67,8 +68,8 @@ function getRandomInt(min, max) {
       var keyList = Object.keys(myValue);
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
-        //console.log(keyList)
-        $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture))
+        console.log(String(currentKey));
+        $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture), String(currentKey));
       }
     });
   }
@@ -97,7 +98,7 @@ function writeToDatabase(catfile,name){
 }
 
 
-$(document.body).on('touchstop', onScroll); // for mobile
+$(document.body).on('touchstop', onScrollm); // for mobile
 $(window).on('scroll', onScroll); 
 
 function onScroll(){
@@ -110,11 +111,25 @@ function onScroll(){
     //hearder seen
   }  
   
-  if (Math.round( $(window).scrollTop()+300) == $(document).height() - $(window).height()) {
+  if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
     feedgo(10);
   } 
 }
 
+function onScrollm(){
+  var b = $(document).height() - $(window).height();
+  var a = ("st=" + $(window).scrollTop() + " he="+$(document).height()+ " wd="+ $(window).height() + " re="+b) ;
+  var tagname= document.getElementById("searchInput");
+  tagname.value=a;
+
+  if($(window).scrollTop() == 0){
+    //hearder seen
+  }  
+  
+  if (Math.round( $(window).scrollTop()+168) == $(document).height() - $(window).height()) {
+    feedgo(10);
+  } 
+}
 
 
 
