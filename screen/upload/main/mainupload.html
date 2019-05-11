@@ -1,1 +1,56 @@
-upload
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <meta name="viewport" content="width=1080, user-scalable=no" >
+    <link href="mainupload.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Cheshire</title>
+</head>
+<body>
+    <div id="div_root">
+        <div id="div_main">
+            <img id="back" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
+            <div id="backname">back</div>
+        </div>
+
+        <div id="container">
+            <div id="addhome">
+                <img id="home" src=../../../image/icon/home.png>
+                <div id="homename">Add home</div>
+            </div>
+            <div id="addlocation">
+                <button id="loca1">KAIST</button>
+                <button id="loca2">Gung</button>
+                <button id="loca3">Yusunggu</button>
+            </div>
+
+            <div id="addcat">
+                <img id="cat" src=../../../image/picture/cat1.png>
+                <div id="catname">Add cat (Optional)</div>
+            </div>
+
+            <div id="addimage">
+                <form id="form1" runat="server">
+                    <div class="image-upload">
+                        <label for="filename">
+                            <img id="test1" src="../../../image/assets/image.png"/>
+                        </label>
+                        <input id="filename" name="filename" type="file" accept="image/gif, image/jpeg, image/png" />
+                    </div>
+                </form>
+            </div>
+
+            <div id="next">
+                <button id="nextbtn" onclick="location.href='../detail/dupload.html'">NEXT</button>
+            </div>
+            
+
+
+        </div>
+        
+    </div>
+
+<script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
+<script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="./mainupload.js"></script>
+    
+</body>
