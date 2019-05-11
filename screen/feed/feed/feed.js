@@ -46,7 +46,11 @@ var feedstring="<div class=\"feed\">\
 return feedstring;
 }
 
-  function readFromDatabase() {
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+  function readFromDatabase(num) {
     /*
        Read comments from the database
        Print all the comments to the table
@@ -55,18 +59,52 @@ return feedstring;
       var myValue = snapshot.val();
       //console.log(myValue)
       var keyList = Object.keys(myValue);
-      for (var i=0;i<keyList.length;i++){
+      for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
         //console.log(keyList)
         
-        console.log(myValue[currentKey].img);
-        //console.log(myValue[currentKey].like);
-        console.log(myValue[currentKey].name);
-        console.log(myValue[currentKey].picture);
-        $('#container').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture))
+        $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture))
       }
     });
   }
+
+  function feedgo(num){
+    for(var i = 0 ; i<num; i++){
+      var a= getRandomInt(0,20);
+      readFromDatabase(a);
+    }
+  }
+
+
+feedgo(10);
+
+function writeToDatabase(catfile,name){
+  var newKey = firebase.database().ref('/post/').push();
+  var imgc="../../../image/picture/"+catfile;
+  var picture=imgc;
+  newKey.set({
+    //location of dictionary
+    img: imgc,
+    name: name,
+    picture: picture
+  });
+
+}
+
+
+$(window).scroll(function() {
+        
+        
+var scrolltop = $(document).scrollTop();
+var height = $(document).height();
+var height_win = $(window).height();
+
+if($(window).scrollTop() == 0){
   
-readFromDatabase()
+}  
+
+if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
   
+  feedgo(10);
+} 
+});
