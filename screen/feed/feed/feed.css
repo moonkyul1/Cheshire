@@ -68,6 +68,7 @@
     width :72px;
     height:72px;
     border-radius:36px;
+    object-fit: cover;
 }
 
 .name{
@@ -100,6 +101,7 @@
 
 .content {
     margin-top: 5px;
+    object-fit: cover;
 }
 #contentid{
     width:100%;
