@@ -6,9 +6,9 @@ tagname.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
       console.log(tagname.value);
-      
+      if(tagname.value!=''){
 
-var second="";
+  var second="";
 
 var tp="\
 <div class=\"row comment\">\
@@ -20,13 +20,15 @@ var tp="\
 </div>\
 </div>\
 "
-    second=second+tp;
+second=second+tp;
+        
+        
     
-    
+          $('#container').append(second);
+          writeToDatabase("@myname(imsi)",tagname.value)
+          tagname.value='';
+      }      
 
-      $('#container').append(second);
-      writeToDatabase("@myname(imsi)",tagname.value)
-      tagname.value='';
     }
   });
 
@@ -199,11 +201,13 @@ return fs;
 
       function writeToDatabase(name,comment){
         var newKey = firebase.database().ref('/post/'+mykey+'/comment').push();
-        newKey.set({
-          //location of dictionary
-          name: name,
-          comment: comment
-        });
+        if(comment != ""){
+          newKey.set({
+            //location of dictionary
+            name: name,
+            comment: comment
+          });
+        }
       }
     
   

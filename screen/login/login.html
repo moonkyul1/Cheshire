@@ -49,6 +49,7 @@
 					</ul>
 					<div class="submit">
 						<input id="finalLogin" type="submit" value="LOGIN" onclick="readFromDatabase();" />
+						<div id="checkerror"></div>
 					</div>
 				</div>
 
@@ -59,7 +60,7 @@
 						<br><br>
 						<li name="row1">
 							<label for="phone">Phone</label>
-							<input type="text" placeholder="Please input your phone number." id="phone" maxlength="11" />
+							<input type="text" placeholder="Please input your phone number." id="phone" />
 							<span class="error"></span>
 						</li>
 						<li>
@@ -79,7 +80,8 @@
 						</li>
 					</ul>
 					<div class="submit">
-						<input id="finalSubmit" type="submit" value="REGISTER" onclick="goLoginafterRegister()" />
+						<input id="finalSubmit" type="submit" value="REGISTER"/>
+						<div id="checkerror"></div>
 					</div>
 					
 				</div>
