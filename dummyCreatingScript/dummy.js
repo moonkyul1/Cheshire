@@ -36,8 +36,8 @@ function buttonclick(){
 
   writeToDatabase(catfile,profilefile,name,by,likes,place,tag);
 
-  document.getElementById("filename").value = "";
-  document.getElementById("by").value = "";
+  document.getElementById("filename").value = ".jpg";
+  document.getElementById("by").value = "@";
   document.getElementById("likes").value = "";
   document.getElementById("places").value = "";
   document.getElementById("tags").value = "";
@@ -47,4 +47,5 @@ function buttonclick(){
 function clearcat(){
   document.getElementById("profilefilename").value="";
   document.getElementById("name").value="";
+
 }
