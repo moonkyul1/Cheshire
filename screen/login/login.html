@@ -31,25 +31,19 @@
 					<ul class="box box1">
 						<br><br>
 						<li>
-							<label for="account">Account</label>
-							<input type="text" placeholder="Account(phone number)" class="account" id="account" />
-							<span class="error"></span>
+							<label for="account">E-mail</label>
+							<input type="text" placeholder="email ID" class="account" id="account" />
+							<span class="error" id="accountError"></span>
 						</li>
 						<li>
 							<label for="password">Password</label>
 							<input type="password" class="password" id="password" placeholder="Password" />
-							<span class="error"></span>
-						</li>
-						<li>
-							<label for="authCode">Verification</label>
-							<input type="text" class="sradd photokey" id="authCode" placeholder="Verification Code" />
-							<span class="add authCode"></span>
-							<span class="error"></span>
+							<span class="error" id="passwordError"></span>
 						</li>
 					</ul>
 					<div class="submit">
 						<input id="finalLogin" type="submit" value="LOGIN" onclick="readFromDatabase();" />
-						<div id="checkerror"></div>
+						<!-- <div id="checkerror"></div> -->
 					</div>
 				</div>
 
@@ -59,14 +53,14 @@
 					<ul class="box box2">
 						<br><br>
 						<li name="row1">
-							<label for="phone">Phone</label>
-							<input type="text" placeholder="Please input your phone number." id="phone" />
+							<label for="phone">E-mail</label>
+							<input type="text" placeholder="Your email ID" id="phone" />
 							<span class="error"></span>
 						</li>
 						<li>
-							<label for="authCode2">Nickname</label>
-							<input type="text" class="sradd phonekey" id="authCode2"  placeholder="Nickname" />
-							<span class="error"></span>	
+							<label for="authCode2">Username</label>
+							<input type="text" id="authCode2"  placeholder="Username used on the platform" />
+							<span class="error"></span>
 						</li>
 						<li>
 							<label for="password2">Password</label>
@@ -83,9 +77,9 @@
 						<input id="finalSubmit" type="submit" value="REGISTER"/>
 						<div id="checkerror"></div>
 					</div>
-					
+
 				</div>
-				
+
 			</div>
 		</div>
     </div>

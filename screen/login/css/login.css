@@ -29,7 +29,7 @@ input {
     width:1080px;
 }
 
-/*login or register, ?��体的位置*/
+/*login or register, ?��体的位置*/
 #loginOrRegister {
 	/* position: fixed; */
 	margin:auto;
@@ -62,7 +62,7 @@ input {
 .title span:hover{
 	color: #fdfffb;
 }
-/*?��录注?��?��体表?��信息*/
+/*?��录注?��?��体表?��信息*/
 form {
 	padding: 40px 0px;
 }
@@ -124,7 +124,7 @@ form {
 	border-radius: 10px;
 }
 
-/*验证?��*/
+/*验证?��*/
 
 .box li .sradd {
 	width: 300px;
@@ -173,12 +173,14 @@ form {
 	clear: both;
 	display: block;
 	color: red;
+	width: 600px;
+	text-align: left;
 	padding-left: 250px;
-	padding-bottom: 5px;
-	height: 36px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 	float: left;
 	font-size: 24px;
-	line-height: 24px;
+	line-height: 36px;
 }
 
 .errorInput {
@@ -188,7 +190,6 @@ form {
 .correctInput {
 	border: 1px solid green !important;
 }
-
 
 .submit{
 	margin-bottom:50px;
