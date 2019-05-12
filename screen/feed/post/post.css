@@ -20,6 +20,7 @@ body {
 
 #feedcontainer{
     padding-top:155px;
+    padding-bottom:155px;
     width:100%;
     background-color: #F0F0F0;
 }

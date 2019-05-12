@@ -2,9 +2,6 @@
 // has finished loading in the browser.
 
 
-
-
-
 var config = {
     apiKey: "AIzaSyAqBEOGJ6QCmFO7ff6sP0pVmpJoWgYnl1U",
     authDomain: "cs374-2e397.firebaseapp.com",
@@ -23,16 +20,14 @@ function like(Obj){
     if(img1.indexOf('_selected')==-1){
         img1=img1.replace('.png','_selected.png');
         $(Obj).attr("src",img1)
-        console.log(img1)
     }
     else{
         img1=img1.replace('_selected.png','.png');
         $(Obj).attr("src",img1)
-        console.log(img1)
     }
 }
  
-function makefeed(img,name,picture){
+function makefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
 <img class=\"img\" src="+img+">\
@@ -40,7 +35,7 @@ var feedstring="<div class=\"feed\">\
 <img class=\"more\" src=../../../image/icon/menu.png>\
 <img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
-<div class=\"content\" ><img id=\"contentid\" src="+picture+"></div>\
+<div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
@@ -50,9 +45,9 @@ var feedstring="<div class=\"feed\">\
 return feedstring;
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   function readFromDatabase(num) {
     /*
@@ -61,12 +56,10 @@ function getRandomInt(min, max) {
     */
     return firebase.database().ref('/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      //console.log(myValue)
       var keyList = Object.keys(myValue);
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
-        //console.log(keyList)
-        $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture))
+        $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture, currentKey));
       }
     });
   }
@@ -91,19 +84,32 @@ function writeToDatabase(catfile,name){
     name: name,
     picture: picture
   });
+}
 
+function save(Obj){
+  firebase.database().ref('/save/').remove();
+  var newKey = firebase.database().ref('/save/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    key: akey
+  });
 }
 
 
-$(document.body).on('touchmove', onScroll); // for mobile
+$(document.body).on('touchstop', onScroll); // for mobile
 $(window).on('scroll', onScroll); 
 
 function onScroll(){
+  var b = $(document).height() - $(window).height();
+  var a = ("st=" + $(window).scrollTop() + " he="+$(document).height()+ " wd="+ $(window).height() + " re="+b) ;
+  var tagname= document.getElementById("searchInput");
+  tagname.value=a;
+
   if($(window).scrollTop() == 0){
     //hearder seen
   }  
-
-  if (Math.round( $(window).scrollTop()) == $(document).height() - $(window).height()) {
+  
+  if (Math.round( b-$(window).scrollTop()) <= 400) {
     feedgo(10);
   } 
 }
