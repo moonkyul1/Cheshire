@@ -16,10 +16,116 @@
   </head>
   <body>
 
-    <div class="" style="margin:50px;">
+    <div id="div_root">
+
+    <div id="div_main">
+        <img id="searchBtn" src=../image/icon/search.png onclick="location.href='../search/search.html'">
+        <button id="searchInput" onclick="location.href='../search/search.html'"></button>
+        <img id="namingBtn" src=../image/icon/scope_selected.png onclick="location.href='../naming/naming.html'">
+    </div>
+
+    <div id="feedcontainer">
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Crowdfunding Projects</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <!-- left crowdfunding item -->
+                    <div class="row">
+                      <div class="col-4">
+                        <!-- left column -->
+                        <img class="cfimage" src=../image/picture/cat1.png></img>
+                      </div>
+                      <div class="col-8">
+                        <!-- right column -->
+                        <div class="row">
+                          <b class="tabtitle">CAT TOY</b>
+                        </div>
+                        <div style="height:20px"></div>
+
+                        <div style="">
+                          <div class="progress" style="height:20px">
+                            <div class="progress-bar" style="width:50%;height:20px"></div>
+                          </div>
+                        </div>
+                        <div style="height:20px"></div>
+
+                        <div class="row" style="">
+                          <div class="col">
+                            <b>$30</b>
+                          </div>
+                          <div class="col">
+                            <button type="button" class="btn btn-primary">DONATE</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <!-- right crowdfunding item -->
+                    <div class="row">
+                      <div class="col-4">
+                        <!-- left column -->
+                        <img class="cfimage" src=../image/picture/cat1.png></img>
+                      </div>
+                      <div class="col-8">
+                        <!-- right column -->
+                        <div class="row">
+                          <b class="tabtitle">CAT TOY</b>
+                        </div>
+                        <div style="height:20px"></div>
+
+                        <div style="">
+                          <div class="progress" style="height:20px">
+                            <div class="progress-bar" style="width:50%;height:20px"></div>
+                          </div>
+                        </div>
+                        <div style="height:20px"></div>
+
+                        <div class="row" style="">
+                          <div class="col">
+                            <b>$30</b>
+                          </div>
+                          <div class="col">
+                            <button type="button" class="btn btn-primary">DONATE</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
       <button type="button" id="alertTest" onclick="alertTestFn()"class="btn btn-outline-primary">
         Alert
       </button>
+
+      <button type="button" id="modalTest" onclick="modalTestFn()"class="btn btn-outline-primary">
+        Modal
+      </button>
+    </div>
     </div>
 
     <div class="" style="margin:50px;">
