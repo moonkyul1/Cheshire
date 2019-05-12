@@ -2,87 +2,44 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+#goBackBtn{
+  position: absolute;
+  top: 36px;
+  left: 36px;
+}
+
+.btn{
+  font-size: 48px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 260px;
+  left: 330px;
+  width:420px;
+  height: 160px;
+
+}
+
 #div_root{
     margin:auto;
     width:1080px;
     font-size: 36px;
     background-color: #F0F0F0;
 }
+\
+.carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
 
-.bgimage{
-  float:left;
-  width: 1080px;
-  height:500px;
-  object-fit: cover;
-}
-
-.explain{
-  
-}
-
-.slide{
-    position: relative;
-    margin:10px auto;
-    width: 1080px;
-    text-align: center;
-    font-family: Arial;
-    color: #FFF;
-    overflow: hidden;
-}
-.slide ul{
-    margin:10px 0;
-    padding:0;
-    width: 9999px;
-    transition:all 0.5s;/*控制所有动画完成时间是0.5秒，即完成一次图片切换勇士0.5秒*/
-}
-.slide li{
-    float: left;
-    width: 1080px;
-    list-style: none;
-    line-height: 200px;
-    font-size: 36px;
-    color: #000;
+.carousel-indicators li {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.slide input[name="sildeInput"]{
-    display: none;
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  width: 50px;
+  height: 50px;
 }
-
-.slide label{/*包含sildeInput的，统一进行样式设置，这里即设置文字123的统一样式*/
-    position: fixed;
-    bottom: 50px;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    margin-left: 50%;
-    line-height: 20px;
-    background-color: #dddddd;
-    cursor: pointer;
-}
-
-.slide label[for^="sildeInput"]:hover{
-    background-color: #ffffff;/*控制鼠标悬浮在文字上时，文字颜色变为红色*/
-}
-
-@keyframes marginLeft{/*以百分比来规定改变发生的时间，0% 是动画的开始时间，100% 动画的结束时间。*/
-0%，28.5%{margin-left: 0;}
-33.3%，62%{margin-left: -1080px;}
-66.7%，95.2%{margin-left: -2160px;}
-100%{margin-left: 0;}
-}
-
-/*控制三个文字的样式*/
-.slide label[for="sildeInput1"]{
-    left: -125px;
-}
-.slide label[for="sildeInput2"]{
-    left: -25px;
-}
-.slide label[for="sildeInput3"]{
-    left: 75px;
-}
-
-/*当点击按钮文字时2，控制ul显示的内容*/
-#sildeInput1:checked ~ ul{ margin-left: 0;}
-#sildeInput2:checked ~ ul{ margin-left: -1080px;}
-#sildeInput3:checked ~ ul{ margin-left: -2160px;}
