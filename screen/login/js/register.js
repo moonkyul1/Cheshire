@@ -13,15 +13,11 @@ $(function() {
 	(function register() {
 		//a ccount
 		$(".box2 #phone").blur(function() {
-			phoneReg = /^[[0-9][0-9][0-9]{9}$/;
 			if($(this).val() == "") {
 				$(this).addClass("errorInput");
 				$(this).next().css("display", "block").html("Phone number cannot be NULL!");
 				return;
-			} else if(!phoneReg.test($(this).val())) {
-				$(this).addClass("errorInput");
-				$(this).next().css("display", "block").html("Please input right phone number!");
-			} else {
+			}else {
 				$(this).addClass("correctInput");
 				$(this).next().empty();
 			}
@@ -37,14 +33,11 @@ $(function() {
  
 		// pass
 		$(".box2 .password").blur(function() {
-			reg = /^[A-Za-z0-9]{6}$/
-			if(reg.test($(this).val())==""){
+			
+			if($(this).val()==""){
 				$(this).addClass("errorInput");
 				$(this).next().css("display", "block").html("Password cannot be NULL,please enter a 6-bit password ï¼?");
-			}else if(!reg.test($(this).val())) {
-				$(this).addClass("errorInput");
-				$(this).next().css("display", "block").html("Please enter a 6-bit password containing numbers or lettersï¼?");
-			} else {
+			}else {
 				$(this).removeClass("errorInput");
 				$(this).next().empty();
 				$(this).addClass("correctInput");
@@ -96,21 +89,25 @@ $('#finalSubmit').bind("click",function(){
 	if(id=="" || nickname=="" || passwd=="" || passwd!=confirm){
 	}
 	else{
-		writeToDatabase(id,nickname,passwd);
-		goLoginafterRegister();	
+		firebase.auth().createUserWithEmailAndPassword(id, passwd).then(function(user) {
+			var user = firebase.auth().currentUser;
+			//console.log(user.uid)
+			var db = firebase.database().ref('/user/').child(user.uid);
+			db.set({
+			   nickname:nickname,
+			}).then(function(){
+				alert("register complete!");
+				location.href='./login.html';
+			});
+			//
+			//
+		}).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			document.getElementById("checkerror").innerHTML = errorMessage;
+		 });
+
+
+	
 	}
-	
 });
-
-function goLoginafterRegister(){
-	
-	//$(".box2 #phone").val('');
-	//$(".box2 .phonekey").val('');
-	//$(".box2 .password").val('');
-	//$(".box2 .email").val('');
-
-	$(".loginForm").css("display", "block");
-	$(".registerForm").css("display", "none");
-	$(".login").addClass("colorRed");
-	$(".register").removeClass("colorRed");
-}

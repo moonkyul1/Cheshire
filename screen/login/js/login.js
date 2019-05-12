@@ -100,17 +100,14 @@ function readFromDatabase() {
 	  var id=$(".box1 .account").val();
 	  var passwd=$(".box1 .password").val();
 	  var check=0;
-	  for (var i=0;i<keyList.length;i++){
-		var currentKey = keyList[i];
 		
-		if(myValue[currentKey].id==id && myValue[currentKey].passwd==passwd){
+		firebase.auth().signInWithEmailAndPassword(id, passwd).then(function(user) {
 			alert("login");
-			check=1;
-			localStorage.setItem("userkey",currentKey);
 			location.href='../feed/feed/feed.html';
-		}
-		
-	  }
-	  if(check!=1) alert("not found");
-    });
+	 	}).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			document.getElementById("checkerror").innerHTML = errorMessage;
+	 	});
+	  });
   }

@@ -74,10 +74,11 @@ return feedstring;
 
 feedgo(10);
 
-function writeToDatabase(catfile,name,by,likes,place,tag){
+function writeToDatabase(catfile,contentfile,name,by,likes,place,tag){
   var newKey = firebase.database().ref('/post/').push();
   var imgc="../../../image/picture/"+catfile;
-  var picture=imgc;
+  var imga="../../../image/picture/"+contentfile;
+  var picture=imga;
   newKey.set({
     //location of dictionary
     img: imgc,
