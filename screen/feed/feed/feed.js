@@ -74,7 +74,7 @@ return feedstring;
 
 feedgo(10);
 
-function writeToDatabase(catfile,name){
+function writeToDatabase(catfile,name,by,likes,place,tag){
   var newKey = firebase.database().ref('/post/').push();
   var imgc="../../../image/picture/"+catfile;
   var picture=imgc;
@@ -82,7 +82,11 @@ function writeToDatabase(catfile,name){
     //location of dictionary
     img: imgc,
     name: name,
-    picture: picture
+    picture: picture,
+    by: by,
+    likes: likes,
+    place: place,
+    tag: tag
   });
 }
 
