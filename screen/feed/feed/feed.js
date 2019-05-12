@@ -30,14 +30,13 @@ function like(Obj){
 function makefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
-<img class=\"img\" src="+img+">\
+<div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
-<img class=\"more\" src=../../../image/icon/menu.png>\
 <img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
 </div>\
 <div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
-<div class=\"accessory\">\
-<img id=\"comment\" src=../../../image/icon/message.png>\
+<div class=\"accessory\" id="+altkey+">\
+<img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
 <img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"location.href=\'../../gift/reward/reward.html\'\">\
 </div>\
@@ -123,4 +122,14 @@ function onScroll(){
 function scrollUp()
 {
   window.scrollTo(0,0)
+}
+
+
+function profiletest(){
+  var user = firebase.auth().currentUser;
+  if (user) {
+    location.href='../../profile/user/userprofile.html';
+  } else {
+    alert("Please Login first");
+  }
 }
