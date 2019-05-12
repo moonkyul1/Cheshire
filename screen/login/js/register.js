@@ -15,28 +15,28 @@ $(function() {
 		$(".box2 #phone").blur(function() {
 			if($(this).val() == "") {
 				$(this).addClass("errorInput");
-				$(this).next().css("display", "block").html("Phone number cannot be NULL!");
+				$(this).next().css("display", "block").html("Email ID  cannot be NULL!");
 				return;
 			}else {
 				$(this).addClass("correctInput");
 				$(this).next().empty();
 			}
 		});
- 
-		// æ³¨å†Œ?•Œ?¢éªŒè¯? ? å¤±å»?„¦?‚¹
+
+		// æ³¨å†Œ?ï¿½ï¿½?ï¿½ï¿½éªŒè¯?ï¿½ï¿½?ï¿½ï¿½å¤±å»?ï¿½ï¿½?ï¿½ï¿½
 		$(".box2 .phonekey").blur(function() {
-			
+
 			$(this).next().next().empty();
 			$(this).addClass("correctInput");
-			
+
 		});
- 
+
 		// pass
 		$(".box2 .password").blur(function() {
-			
+
 			if($(this).val()==""){
 				$(this).addClass("errorInput");
-				$(this).next().css("display", "block").html("Password cannot be NULL,please enter a 6-bit password ï¼?");
+				$(this).next().css("display", "block").html("Password cannot be NULL,please enter an at least 6-digit password");
 			}else {
 				$(this).removeClass("errorInput");
 				$(this).next().empty();
@@ -51,13 +51,13 @@ $(function() {
 			var pwd2 = $(this).val();
 			if(pwd1 == "") {
 				$(this).removeClass("errorInput");
-				$(this).next().html("Confirm password cannot be NULLï¼?");
+				$(this).next().html("Confirm password cannot be NULL");
 				$(this).addClass("errorInput");
 				return;
 			} else if(pwd1 != pwd2) {
 				$(this).addClass("errorInput");
 				$(this).removeClass("correctInput");
-				$(this).next().css("display", "block").html("Inconsistent passwordsï¼?");
+				$(this).next().css("display", "block").html("Inconsistent passwords");
 			} else {
 				$(this).removeClass("errorInput");
 				$(this).addClass("correctInput");
@@ -108,6 +108,6 @@ $('#finalSubmit').bind("click",function(){
 		 });
 
 
-	
+
 	}
 });
