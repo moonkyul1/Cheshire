@@ -1,0 +1,94 @@
+
+<!Doctype html>
+<html lang="en">
+
+
+	<head>
+		<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+		<meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato">
+    <meta name="viewport" content="width=1080, user-scalable=no" >
+		<title>Register</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+
+	</head>
+
+	<body>
+    <div id="div_root">
+		<!--choose login/register-->
+		<div id="loginOrRegister">
+			<!--titile-->
+			<div class="title">
+				<span class="login colorRed" onclick="goLogin()">  LOGIN  </span>
+				<span class="register" onclick="goRegister()">  REGISTER  </span>
+			</div>
+
+
+			<div id="formInformation">
+				<!--loginin-->
+				<div class="loginForm">
+					<ul class="box box1">
+						<br><br>
+						<li>
+							<label for="account">E-mail</label>
+							<input type="text" placeholder="email ID" class="account" id="account" />
+							<span class="error" id="accountError"></span>
+						</li>
+						<li>
+							<label for="password">Password</label>
+							<input type="password" class="password" id="password" placeholder="Password" />
+							<span class="error" id="passwordError"></span>
+						</li>
+					</ul>
+					<div class="submit">
+						<input id="finalLogin" type="submit" value="LOGIN" onclick="readFromDatabase();" />
+						<!-- <div id="checkerror"></div> -->
+					</div>
+				</div>
+
+
+				<!--register-->
+				<div class="registerForm">
+					<ul class="box box2">
+						<br><br>
+						<li name="row1">
+							<label for="phone">E-mail</label>
+							<input type="text" placeholder="Your email ID" id="phone" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="authCode2">Username</label>
+							<input type="text" id="authCode2"  placeholder="Username used on the platform" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="password2">Password</label>
+							<input type="password" class="password" id="password2" placeholder="Please input password" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="password3">Confirm</label>
+							<input type="password" class="email" id="password3" placeholder="Please input password again" />
+							<span class="error"></span>
+						</li>
+					</ul>
+					<div class="submit">
+						<input id="finalSubmit" type="submit" value="REGISTER"/>
+						<div id="checkerror"></div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+    </div>
+	</body>
+
+</html>
+
+<script src="../../jquery/js/jquery-1.9.0.min.js"></script>
+<script src="../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/register.js" type="text/javascript" charset="utf-8"></script>

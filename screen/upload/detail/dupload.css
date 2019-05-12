@@ -37,14 +37,14 @@
 }
 
 #tags{
-    width:100%;
     height:120px;
     background-color: #FFFFFF;
+    overflow-x:auto;
+    white-space: nowrap;
 }
 
 #taga{
     width:auto;
-    position: relative;
     float:left;
     margin-left:36px;
     margin-top:24px;
@@ -53,36 +53,30 @@
     outline:0;
     border-radius:36px;
     background-color:#7B7B7B;
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 #tag1{
-    display:inline-block;
+
     float:left;
-    height:36px;
-    width:36px;
-    margin-top:18px;
-    margin-left:18px;
-}
+    }
+
 
 #tag2{
-    display:inline-block;
+    margin-top: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 24px;
+    font-weight: bold;
     float:left;
-    height:36px;
-    width:36px;
-    margin-top:18px;
-    margin-left:8px;
-    margin-right:20px;
-    color:white;
-}
-
+  }
 #tag3{
-    display:inline-block;
+
     float:right;
-    height:36px;
-    width:36px;
-    margin-left:8px;
-    margin-top:18px;
-    margin-right:18px;
+
 }
 
 
@@ -99,12 +93,13 @@
     height:72px;
     margin-top:38px;
     margin-left:72px;
-    
+
 }
 
 input::placeholder {
     color: #BCBCBC;
 }
+
 
 #tagname{
     float:left;
@@ -112,7 +107,7 @@ input::placeholder {
     margin-left:72px;
     height:70px;
     font-size:59px;
-    color:#BCBCBC;
+    color:#000000;
     border:0;
     outline:0;
 }
@@ -131,7 +126,7 @@ input::placeholder {
     height:72px;
     margin-top:44px;
     margin-left:72px;
-    
+
 }
 
 #captionname{

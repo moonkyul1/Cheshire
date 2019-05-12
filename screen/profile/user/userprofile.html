@@ -14,94 +14,26 @@
       <div class="displays">
         <img id="profile" src=../../../image/picture/sally.png></img>
         <div class="stats">
-          <div class="stat">123</div>
-          <div class="stat">456</div>
-          <div class="stat">789</div>
+          <div class="stat">0</div>
+          <div class="stat">0</div>
+          <div class="stat">0</div>
           <div class="stattext">yeet</div>
           <div class="stattext">yeet2</div>
           <div class="stattext">yeet3</div>
         </div>
         <div>
-          <button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button>
+          <button type="button" id="logout" class="btn btn-primary btn-lg displaysBtn">Log Out</button>
         </div>
+        <div id="checkerror"></div>
       </div>
-      <div class="userfeed container">
-        <div class="row no-gutters">
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-
-        </div>
-        <!-- one row no-gutters -->
-        <div class="row no-gutters">
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row no-gutters -->
-        <div class="row no-gutters">
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row no-gutters -->
-        <div class="row no-gutters">
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm">
-
-          </div>
-        </div>
+      <div id="imgcontainer" class="userfeed container">
+        
       </div>
     </div>
     <!-- the top bar stays on top -->
     <div id="div_main">
-      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
-      <div class="name">@sallylovescats</div>
+      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="history.back()">
+      <div id="username" class="name"></div>
       <img id="archiveBtn" src=../../../image/icon/bookmark.png onclick="location.href='./archive/archive.html'">
     </div>
 
@@ -116,7 +48,7 @@
   </div>
 
   <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
-  <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
   <script src="./userprofile.js"></script>
 
 </body>
