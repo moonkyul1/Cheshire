@@ -1,0 +1,92 @@
+
+<!Doctype html>
+<html lang="en">
+
+
+	<head>
+		<meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato">
+    <meta name="viewport" content="width=1080, user-scalable=no" >
+		<title>Register</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+
+	</head>
+
+	<body>
+    <div id="div_root">
+		<!--choose login/register-->
+		<div id="loginOrRegister">
+			<!--titile-->
+			<div class="title">
+				<span class="login colorRed" onclick="goLogin()">  LOGIN  </span>
+				<span class="register" onclick="goRegister()">  REGISTER  </span>
+			</div>
+
+
+			<div id="formInformation">
+				<!--loginin-->
+				<form action="" method="post" class="loginForm">
+					<ul class="box box1">
+						<li>
+							<label for="account">Account</label>
+							<input type="text" placeholder="Account(phone number)" class="account" id="account" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="password">Password</label>
+							<input type="password" class="password" id="password" placeholder="Password" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="authCode">Verification</label>
+							<input type="text" class="sradd photokey" id="authCode" placeholder="Verification Code" />
+							<span class="add authCode"></span>
+							<span class="error"></span>
+						</li>
+					</ul>
+					<div class="submit">
+						<input type="submit" value="LOGIN" />
+					</div>
+				</form>
+
+
+				<!--register-->
+				<form action="" method="post" class="registerForm">
+					<ul class="box box2">
+						<li>
+							<label for="phone">Phone</label>
+							<input type="text" placeholder="Please input your phone number." id="phone" maxlength="11" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="authCode2">Verification</label>
+							<input type="text" class="sradd phonekey" id="authCode2"  placeholder="Verification Code" />
+							<span class="add sendaAuthCode">Send Code</span>
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="password2">Password</label>
+							<input type="password" class="password" id="password2" placeholder="Please input password" />
+							<span class="error"></span>
+						</li>
+						<li>
+							<label for="password3">Confirm</label>
+							<input type="password" class="email" id="password3" placeholder="Please input password again" />
+							<span class="error"></span>
+						</li>
+					</ul>
+					<div class="submit">
+						<input type="submit" value="REGISTER" />
+					</div>
+				</form>
+			</div>
+		</div>
+    </div>
+	</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
