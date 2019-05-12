@@ -32,12 +32,12 @@ var feedstring="<div class=\"feed\">\
 <div class=header>\
 <div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
-<img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"location.href=\'../../profile/user/archive/archive.html\'\">\
+<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this)\"></div>\
 </div>\
 <div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
-<img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
+<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);piclike(this);\">\
 <img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"location.href=\'../../gift/reward/reward.html\'\">\
 </div>\
 </div>";
@@ -99,6 +99,28 @@ function save(Obj){
   });
 }
 
+function picarchive(Obj){
+  var user = firebase.auth().currentUser;
+  var akey= $(Obj).parent().attr("id");
+  //console.log(user.uid);
+  var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    postnum: akey
+  });
+}
+
+function piclike(Obj){
+  var user = firebase.auth().currentUser;
+  var akey= $(Obj).parent().attr("id");
+  //console.log(user.uid);
+  var newKey = firebase.database().ref('/user/'+user.uid+'/like/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    postnum: akey
+  });
+}
+
 
 $(document.body).on('touchstop', onScroll); // for mobile
 $(window).on('scroll', onScroll); 
@@ -133,3 +155,4 @@ function profiletest(){
     alert("Please Login first");
   }
 }
+
