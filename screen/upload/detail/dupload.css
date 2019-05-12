@@ -56,33 +56,22 @@
 }
 
 #tag1{
-    display:inline-block;
+    margin-top:6px;
     float:left;
-    height:36px;
-    width:36px;
-    margin-top:18px;
-    margin-left:18px;
-}
+    }
+
 
 #tag2{
-    display:inline-block;
+    margin-top: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-weight: normal;
     float:left;
-    height:36px;
-    width:36px;
-    margin-top:18px;
-    margin-left:8px;
-    margin-right:20px;
-    color:white;
-}
-
+  }
 #tag3{
-    display:inline-block;
+    margin-top:6px;
     float:right;
-    height:36px;
-    width:36px;
-    margin-left:8px;
-    margin-top:18px;
-    margin-right:18px;
+    
 }
 
 

@@ -12,11 +12,13 @@ tagname.addEventListener("keyup", function(event) {
 
 function tagmake(tag,width){
 var tagstring="\
-<div id=\"taga\" style=\"width:"+width+";\">\
+<span class=\"badge badge-pill badge-secondary tag\"\
+<div id=\"taga\">\
 <img id=\"tag1\" src=../../../image/icon/tag_small.png>\
 <div id=\"tag2\">"+tag+"</div>\
 <img id=\"tag3\" src=../../../image/icon/x_small.png onclick=deleteLine(this);>\
 </div>\
+</span>\
 ";
 return tagstring;
 }
