@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <meta name="viewport" content="width=1080, user-scalable=no" >
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="tutorial.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Tutor</title>
+</head>
+
+<body>
+<!-- 点击文字，切换图片 -->
+<div id="div_root">
+  <div class="slide">
+      <!--按钮文字，点击文字，控制图片/内容切换-->
+      <input type="radio" name="sildeInput" value="0" id="sildeInput1" checked hidden/>
+      <label for="sildeInput1"></label>
+
+      <input type="radio" name="sildeInput" value="1" id="sildeInput2" hidden/>
+      <label for="sildeInput2"></label>
+
+      <input type="radio" name="sildeInput" value="1" id="sildeInput3" hidden/>
+      <label for="sildeInput3"></label>
+
+
+      <!--进行切换的内容，点击按钮文字时，可以控制显示不同的内容（不同的图片，或不同的文字，或显示不同的版块内容）-->
+      <ul>
+          <li>
+            <div class="">
+              <img src="../image/picture/cat1.png" class=bgimage>
+              <div class="explain">
+                some text goes here
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="">
+              <img src="../image/picture/cat2.png" class=bgimage>
+              <div class="explain">
+                some text goes here
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="">
+              <img src="../image/picture/cat3.png" class=bgimage>
+              <div class="explain">
+                some text goes here
+              </div>
+            </div>
+          </li>
+      </ul>
+  </div>
+</div>
+
+</body>
+</html>
