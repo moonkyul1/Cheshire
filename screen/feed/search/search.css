@@ -19,7 +19,7 @@
     width:66px;
     height:66px;
 }
-#searchInput{
+#gam{
     float:left;
     margin-left:66px;
     margin-top:50px;
@@ -29,6 +29,13 @@
     outline:0;
     border-radius:30px;
     background-color:#F0F0F0;
+}
+#searchInput{
+    width:620px;
+    height:50px;
+    background-color:#F0f0f0;
+    border:0;
+    outline:0;
 }
 #xBtn{
     float:right;

@@ -105,7 +105,9 @@ function readFromDatabase() {
 		
 		if(myValue[currentKey].id==id && myValue[currentKey].passwd==passwd){
 			alert("login");
-			check=1;			
+			check=1;
+			localStorage.setItem("userkey",currentKey);
+			location.href='../feed/feed/feed.html';
 		}
 		
 	  }
