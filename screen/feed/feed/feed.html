@@ -3,6 +3,7 @@
     
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="feed.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Cheshire</title>
@@ -15,7 +16,11 @@
             <img id="namingBtn" src=../../../image/icon/scope_selected.png onclick="location.href='../naming/naming.html'">
         </div>
         <div id="container">
-            
+            <div class="w-50 mx-auto toast">
+                <div class="toast-header">
+                    <strong class="mr-auto text-primary">This post has been archived.</strong>
+                </div>
+            </div>
         </div>
         <div id="footer">
             <div id="tab" onclick="scrollUp();"><img src=../../../image/icon/feed_selected.png></div>
@@ -29,6 +34,9 @@
 
 <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
 <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="./feed.js"></script>
     
 </body>

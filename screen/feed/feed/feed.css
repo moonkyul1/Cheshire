@@ -3,6 +3,12 @@
     width:1080px;
 }
 
+.toast{
+    position: fixed;
+    bottom: 180px;
+    left: 38%;
+}
+
 #div_main{
     width:1080px;
     position:fixed;
@@ -153,3 +159,4 @@
     margin-bottom:44px;
     width: 20%;
 }
+ 
