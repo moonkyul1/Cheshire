@@ -138,10 +138,12 @@ body {
 }
 
 .tagslist{
-
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .tag{
+  display: inline-block;
   margin-right: 20px;
 }
 
