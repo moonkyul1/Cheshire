@@ -1,12 +1,14 @@
 
-// åˆ‡æ¢ç™»å½•
+
+// ?ˆ‡?¢?™»å½?
 function goLogin() {
 	$(".loginForm").css("display", "block");
 	$(".registerForm").css("display", "none");
 	$(".login").addClass("colorRed");
 	$(".register").removeClass("colorRed");
 }
-// åˆ‡æ¢æ³¨å†Œ
+// ?ˆ‡?¢æ³¨å†Œ
+
 function goRegister() {
 	$(".registerForm").css("display", "block");
 	$(".loginForm").css("display", "none");

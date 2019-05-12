@@ -1,3 +1,6 @@
+
+
+
 $(function() {
 	//  create_code
 	(function create_code() {
@@ -51,11 +54,11 @@ $(function() {
 			reg = /^[A-Za-z0-9]{6}$/
 			if($(this).val() == "") {
 				$(this).addClass("errorInput");
-				$(this).next().css("display", "block").html("Password cannot be NULLÔºÅ");
+				$(this).next().css("display", "block").html("Password cannot be NULLÔº?");
 			} else if(!reg.test($(".password").val())) {
 				$(this).addClass("errorInput");
 				$(this).next().css("display", "block").html("\n" +
-					"Please enter a 6-bit password containing numbers or lettersÔºÅ");
+					"Please enter a 6-bit password containing numbers or lettersÔº?");
 			} else {
 				$(this).addClass("correctInput");
 				$(this).removeClass("errorInput");
@@ -63,17 +66,17 @@ $(function() {
 			}
 		});
  
-		// È™åËØÅÁ†ÅËæìÂÖ•Ê°ÜÂ§±ÂéªÁÑ¶ÁÇπ
+		// È™åËØÅ?†ÅËæìÂÖ•Ê°ÜÂ§±?éª?Ñ¶?Çπ
 		$(".box1 .photokey").blur(function() {
 			var code1 = $('.box1 .photokey').val().toLowerCase();
 			var code2 = $(".box1 .authCode").text().toLowerCase();
 			if($('.box1 .photokey').val() == "") {
 				$('.box1 .photokey').addClass("errorInput");
-				$(this).next().next().html("Verification code cannot be NULLÔºÅ");
+				$(this).next().next().html("Verification code cannot be NULLÔº?");
 				return;
 			} else if(code1 != code2) {
 				$(this).addClass("errorInput");
-				$(this).next().next().css("display", "block").html("Verification code is wrongÔºÅ");
+				$(this).next().next().css("display", "block").html("Verification code is wrongÔº?");
 			} else {
 				$(this).removeClass("errorInput");
 				$(this).next().next().empty();
@@ -82,3 +85,30 @@ $(function() {
 		})
 	})();
 })
+
+
+
+function readFromDatabase() {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/user/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+	  var keyList = Object.keys(myValue);
+	  
+	  var id=$(".box1 .account").val();
+	  var passwd=$(".box1 .password").val();
+	  var check=0;
+	  for (var i=0;i<keyList.length;i++){
+		var currentKey = keyList[i];
+		
+		if(myValue[currentKey].id==id && myValue[currentKey].passwd==passwd){
+			alert("login");
+			check=1;			
+		}
+		
+	  }
+	  if(check!=1) alert("not found");
+    });
+  }

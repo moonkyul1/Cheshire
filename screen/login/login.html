@@ -4,6 +4,7 @@
 
 
 	<head>
+		<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 		<meta charset="UTF-8">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lato">
@@ -26,8 +27,9 @@
 
 			<div id="formInformation">
 				<!--loginin-->
-				<form action="" method="post" class="loginForm">
+				<div class="loginForm">
 					<ul class="box box1">
+						<br><br>
 						<li>
 							<label for="account">Account</label>
 							<input type="text" placeholder="Account(phone number)" class="account" id="account" />
@@ -46,24 +48,24 @@
 						</li>
 					</ul>
 					<div class="submit">
-						<input type="submit" value="LOGIN" />
+						<input id="finalLogin" type="submit" value="LOGIN" onclick="readFromDatabase();" />
 					</div>
-				</form>
+				</div>
 
 
 				<!--register-->
-				<form action="" method="post" class="registerForm">
+				<div class="registerForm">
 					<ul class="box box2">
-						<li>
+						<br><br>
+						<li name="row1">
 							<label for="phone">Phone</label>
 							<input type="text" placeholder="Please input your phone number." id="phone" maxlength="11" />
 							<span class="error"></span>
 						</li>
 						<li>
-							<label for="authCode2">Verification</label>
-							<input type="text" class="sradd phonekey" id="authCode2"  placeholder="Verification Code" />
-							<span class="add sendaAuthCode">Send Code</span>
-							<span class="error"></span>
+							<label for="authCode2">Nickname</label>
+							<input type="text" class="sradd phonekey" id="authCode2"  placeholder="Nickname" />
+							<span class="error"></span>	
 						</li>
 						<li>
 							<label for="password2">Password</label>
@@ -77,9 +79,11 @@
 						</li>
 					</ul>
 					<div class="submit">
-						<input type="submit" value="REGISTER" />
+						<input id="finalSubmit" type="submit" value="REGISTER" onclick="goLoginafterRegister()" />
 					</div>
-				</form>
+					
+				</div>
+				
 			</div>
 		</div>
     </div>
