@@ -54,3 +54,16 @@ var config = {
     
 //readFromSave();
 //readFromDatabase();
+
+function JbFunc1() {
+  var a = document.getElementById( 'prog1' ).value;
+  document.getElementById( 'prog1' ).value = a*1 + 10;
+}
+function JbFunc2() {
+  var a = document.getElementById( 'prog2' ).value;
+  document.getElementById( 'prog2' ).value = a*1 + 10;
+}
+function JbFunc3() {
+  var a = document.getElementById( 'prog3' ).value;
+  document.getElementById( 'prog3' ).value = a*1 + 10;
+}

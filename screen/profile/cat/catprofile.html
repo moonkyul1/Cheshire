@@ -16,14 +16,15 @@
         <img id="profile" src=../../../image/picture/cat1.png></img>
         <div class="stats">
           <div class="stat">123</div>
-          <div class="stat">456</div>
-          <div class="stat">789</div>
-          <div class="stattext">yeet</div>
-          <div class="stattext">yeet2</div>
-          <div class="stattext">yeet3</div>
+          <div class="stat">13</div>
+          <div class="stat">712$</div>
+          <div class="stattext">post</div>
+          <div class="stattext">funded</div>
+          <div class="stattext">total</div>
         </div>
         <div>
-          <button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button>
+          <!--<button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button> -->
+          
         </div>
       </div>
       <div id="crowdfunding">
@@ -35,19 +36,17 @@
               <div class="row">
                 <div class="col-4">
                   <!-- left column -->
-                  <img class="cfimage" src=../../../image/picture/cat1.png></img>
+                  <img class="cfimage" src=../../../image/assets/catfood.png></img>
                 </div>
                 <div class="col-8">
                   <!-- right column -->
                   <div class="row">
-                    <b class="tabtitle">CAT TOY</b>
+                    <b class="tabtitle">CAT FOOD</b>
                   </div>
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                    <div class="progress" style="height:20px">
-                      <div class="progress-bar" style="width:50%;height:20px"></div>
-                    </div>
+                      <progress id="prog1" value="30" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
@@ -56,7 +55,7 @@
                       <b>$30</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary">DONATE</button>
+                      <button type="button" class="btn btn-primary" onclick=JbFunc1()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -68,19 +67,17 @@
               <div class="row bottompadding">
                 <div class="col-4">
                   <!-- left column -->
-                  <img class="cfimage" src=../../../image/picture/cat1.png></img>
+                  <img class="cfimage" src=../../../image/assets/blanket.png></img>
                 </div>
                 <div class="col-8">
                   <!-- right column -->
                   <div class="row">
-                    <b class="tabtitle">CAT TOY</b>
+                    <b class="tabtitle">BLANKET</b>
                   </div>
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                    <div class="progress" style="height:20px">
-                      <div class="progress-bar" style="width:50%;height:20px"></div>
-                    </div>
+                      <progress id="prog2" value="60" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
@@ -89,7 +86,7 @@
                       <b>$30</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary">DONATE</button>
+                      <button type="button" class="btn btn-primary" onclick=JbFunc2()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -103,7 +100,7 @@
               <div class="row">
                 <div class="col-4">
                   <!-- left column -->
-                  <img class="cfimage" src=../../../image/picture/cat1.png></img>
+                  <img class="cfimage" src=../../../image/assets/cattoy.png></img>
                 </div>
                 <div class="col-8">
                   <!-- right column -->
@@ -113,9 +110,7 @@
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                    <div class="progress" style="height:20px">
-                      <div class="progress-bar" style="width:50%;height:20px"></div>
-                    </div>
+                      <progress id="prog3" value="10" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
@@ -124,7 +119,7 @@
                       <b>$30</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary">DONATE</button>
+                      <button type="button" class="btn btn-primary" onclick=JbFunc3()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -265,7 +260,7 @@
   </div>
 
   <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
-  <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script src="./userprofile.js"></script>
+  <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="./catprofile.js"></script>
 
 </body>

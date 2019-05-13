@@ -17,10 +17,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col dashboard_box1">
-                        <div class="num">7</div>
+                        <div class="first">cats supported</div>
+                        <div id="num" class="num"></div>
                     </div>
                     <div class="col dashboard_box2">
-                        <div class="num">340$</div>
+                        <div class="second">raised total</div>
+                        <div id="cost" class="num"></div>
                     </div>
                 </div>
             </div>
@@ -48,7 +50,7 @@
                     <div class="profile">
                     </div>
                     <div class="catName">
-                        catname
+                        kitty
                     </div>
                 </div>
 
@@ -62,7 +64,7 @@
                 </div>
 
                 <div class="history_button">
-                    <button type="button" class="btn btn-primary">VIEW REWARD</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='../../profile/cat/catprofile.html'">VIEW REWARD</button>
                 </div>
             </div>
         </div>
@@ -70,7 +72,7 @@
         <!-- top tab -->
         <div id="div_main">
             <div class="tab" id="tab1">Rewards</div>
-            <div class="tab" id="tab2">For catmoms</div>
+            <div class="tab" id="tab2" onclick="accessn()">For catmoms</div>
             <div class="clear"></div>
         </div>
         
@@ -84,4 +86,8 @@
         </div>
 
     </div>
+
+  <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
+  <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="./reward.js"></script>
 </body>

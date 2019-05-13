@@ -18,23 +18,30 @@ body {
 
 
 .dashboard_box1{
+    width:486px;
+    height:323px;
     margin: 0px 18px 0px 36px;
-    padding: 24px 36px 24px 36px;   
+    padding: 24px 36px 12px 36px;   
     background-color: #FF0000;
     border-radius: 30px;
-    background: linear-gradient(90deg, rgba(70,233,200,1) 0%, rgba(210,56,255,1) 35%, rgba(254,162,42,1) 100%);
+    background: rgb(95,73,254);
+    background: linear-gradient(258deg, rgba(95,73,254,1) 0%, rgba(108,67,253,1) 35%, rgba(168,39,250,1) 100%);
 }
 
 .dashboard_box2{
+    width:486px;
+    height:323px;
     margin: 0px 36px 0px 18px;
     padding: 24px 36px 24px 36px;
     background-color: #FF0000;
     border-radius: 30px;
-    background: linear-gradient(90deg, rgba(70,233,200,1) 0%, rgba(210,56,255,1) 35%, rgba(254,162,42,1) 100%);
+    background: rgb(41,201,186);
+    background: linear-gradient(80deg, rgba(41,201,186,1) 0%, rgba(84,84,246,1) 35%);
 }
 
 .num{
-    font-size: 160px;
+    float:left;
+    font-size: 130px;
     color: #FFFFFF;
     font-weight: bold;
     top: 0px;
@@ -157,4 +164,16 @@ body {
     margin-top:44px;
     margin-bottom:44px;
     width: 20%;
+}
+
+.first{
+    color:white;
+    font-size:57px;
+    font-weight:bold;
+}
+
+.second{
+    font-size:57px;
+    font-weight:bold;
+    color:white;
 }

@@ -50,7 +50,7 @@ var feedstring="<div class=\"feed\">\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
 <img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);piclike(this);\">\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"location.href=\'../../gift/reward/reward.html\'\">\
+<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
 </div>\
 </div>";
 return feedstring;
@@ -230,4 +230,10 @@ function profiletest(){
 function alertTestFn(){
   $('.toast').toast({delay: 700});
   $('.toast').toast('show');
+}
+
+
+function jbFunc() {
+  var a = document.getElementById( 'prog' ).value;
+  document.getElementById( 'prog' ).value = a*1 + 10;
 }
