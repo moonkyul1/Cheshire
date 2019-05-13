@@ -68,3 +68,13 @@
 .col-sm-4{
   text-align: center;
 }
+
+.toast{
+  max-width: 1000px;
+}
+
+.toast-header{
+  padding: 20px;
+  text-align: center;
+  font-size: 36px;
+}
