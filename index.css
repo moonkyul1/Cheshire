@@ -90,8 +90,6 @@ b {
 }
 
 #top_logo img {
-	-webkit-animation: A 15s linear 0s infinite;
-	animation: A 15s linear 0s infinite;
 	margin-right: auto;
 	margin-left: auto;
 	display: block;
@@ -150,3 +148,5 @@ b {
 	background-color: #fff
 }
 
+.catchphrase{
+}
