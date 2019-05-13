@@ -19,7 +19,7 @@ body {
 
 .dashboard_box1{
     margin: 0px 18px 0px 36px;
-    padding: 24px 36px 24px 36px;   
+    padding: 24px 36px 24px 36px;
     background-color: #FF0000;
     border-radius: 30px;
     background: linear-gradient(90deg, rgba(70,233,200,1) 0%, rgba(210,56,255,1) 35%, rgba(254,162,42,1) 100%);
@@ -119,21 +119,22 @@ body {
 }
 
 #back{
-    float:left;
-    margin-top:24px;
-    margin-left:36px;
-    width:72px;
-    height:72px;
+      float:left;
+      margin-top:47px;
+      margin-left:47px;
+      width:66px;
+      height:66px;
 }
 
 #backname{
-    float:left;
-    margin-left:373px;
-    margin-top:39px;
-    height:43px;
-    width:118px;
-    font-size:36px;
-    font-weight:bold;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
 }
 
 
