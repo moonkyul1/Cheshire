@@ -108,11 +108,17 @@ return feedstring;
     */
     return firebase.database().ref('/user/'+user.uid+'/like/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      var keyList = Object.keys(myValue);
-      for (var i=0;i<keyList.length;i++){
-        var currentKey = keyList[i];
-        likelist.push(currentKey);
+      if(myValue == null){
+
       }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          likelist.push(currentKey);
+        }
+      }
+      
     });
   }
 

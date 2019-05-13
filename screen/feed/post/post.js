@@ -2,6 +2,8 @@
 // has finished loading in the browser.
 var tagname= document.getElementById("newComment");  
 
+var usernickname="";
+
 tagname.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -13,7 +15,7 @@ tagname.addEventListener("keyup", function(event) {
 var tp="\
 <div class=\"row comment\">\
 <div class=\"col-sm-3 username\">\
-"+"@myname(imsi)"+"\
+@"+usernickname+"\
 </div>\
 <div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
 "+tagname.value+"\
@@ -25,7 +27,7 @@ second=second+tp;
         
     
           $('#container').append(second);
-          writeToDatabase("@myname(imsi)",tagname.value)
+          writeToDatabase('@'+usernickname,tagname.value)
           tagname.value='';
       }      
 
@@ -189,13 +191,19 @@ return fs;
         */
         return firebase.database().ref('/post/'+mykey+'/comment').once('value',function(snapshot){
           var myValue = snapshot.val();
-          var keyList = Object.keys(myValue);
-          for (var i=0;i<keyList.length;i++){
-            var currentKey = keyList[i];
-            namelist.push(myValue[currentKey].name);
-            commentlist.push(myValue[currentKey].comment);
+          if(myValue==null){
+
           }
+          else{
+            var keyList = Object.keys(myValue);
+            for (var i=0;i<keyList.length;i++){
+              var currentKey = keyList[i];
+              namelist.push(myValue[currentKey].name);
+              commentlist.push(myValue[currentKey].comment);
+            }
           $('#container').append(makecomment());
+          }
+          
         });
       }
 
@@ -213,3 +221,30 @@ return fs;
   
 readFromSave();
 readFromDatabase();
+
+
+
+function readnickname(user) {
+  /*
+     Read comments from the database
+     Print all the comments to the table
+  */
+  return firebase.database().ref('/user/'+user.uid+'/').once('value',function(snapshot){
+    var myValue = snapshot.val();
+    var keyList = Object.keys(myValue);
+    for (var i=0;i<keyList.length;i++){
+      var currentKey = keyList[i];
+      if(currentKey == 'nickname'){
+        usernickname=myValue[currentKey];
+      }
+    }
+  });
+}
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    readnickname(user);
+  } else {
+    usernickname="(imsi)";
+  }
+});

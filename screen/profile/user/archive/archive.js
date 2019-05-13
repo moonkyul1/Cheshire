@@ -131,12 +131,18 @@ function feedmake(keylist,imglist){
     */
     return firebase.database().ref('/user/'+user.uid+'/archieve/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      var keyList = Object.keys(myValue);
-      for (var i=0;i<keyList.length;i++){
-        var currentKey = keyList[i];
-        keylist.push(myValue[currentKey].postnum);
-        imglist.push(myValue[currentKey].postnum);
+      if(myValue == null){
+
       }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          keylist.push(myValue[currentKey].postnum);
+          imglist.push(myValue[currentKey].postnum);
+        }
+      }
+      
       //imglist;
       //imglist=parseImage(imglist);
       //console.log("afterimglist is")
@@ -155,9 +161,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     //var imglist=[];
     readFromimg(user).then(
       function(){
-        parseImage(imglist).then(function(){
-          $('#imgcontainer').append(feedmake(keylist,imglist));
-        });  
+        if(imglist.length!=0){
+          parseImage(imglist).then(function(){
+            $('#imgcontainer').append(feedmake(keylist,imglist));
+          });
+        }
       }
 
     );

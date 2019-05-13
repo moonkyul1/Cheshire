@@ -111,17 +111,22 @@ var fss="\
     */
     return firebase.database().ref('/user/'+user.uid+'/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      var keyList = Object.keys(myValue);
-      for (var i=0;i<keyList.length;i++){
-        var currentKey = keyList[i];
-        if(currentKey == 'nickname'){
-          var nickname=myValue[currentKey];
-          $('#username').text(nickname);
-        }
-          //$('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
-          //$('#feedcontainer').prepend(feedmake(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture));
+      if(myValue==null){
 
       }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          if(currentKey == 'nickname'){
+            var nickname=myValue[currentKey];
+            $('#username').text(nickname);
+          }
+            //$('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
+            //$('#feedcontainer').prepend(feedmake(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture));
+        }
+      }
+      
     });
   }
 
@@ -151,12 +156,18 @@ var fss="\
     */
     return firebase.database().ref('/user/'+user.uid+'/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
-      var keyList = Object.keys(myValue);
-      for (var i=0;i<keyList.length;i++){
-        var currentKey = keyList[i];
-        keylist.push(myValue[currentKey].postnum);
-        imglist.push(myValue[currentKey].postnum);
+      if(myValue==null){
+        
       }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          keylist.push(myValue[currentKey].postnum);
+          imglist.push(myValue[currentKey].postnum);
+        }
+      }
+      
       //imglist;
       //imglist=parseImage(imglist);
       //console.log("afterimglist is")
@@ -176,9 +187,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     readFromDatabase(user);
     readFromimg(user).then(
       function(){
-        parseImage(imglist).then(function(){
-          $('#imgcontainer').append(feedmake(keylist,imglist));
-        });  
+        if(imglist.length != 0){
+          parseImage(imglist).then(function(){
+            $('#imgcontainer').append(feedmake(keylist,imglist));
+          });
+        }
       }
 
     );

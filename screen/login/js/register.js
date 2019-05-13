@@ -67,26 +67,22 @@ $(function() {
 	})();
 });
 
-
-function writeToDatabase(id,nickname,passwd){
-	var newKey = firebase.database().ref('/user/').push();
-	newKey.set({
-	  //location of dictionary
-	  id: id,
-	  nickname: nickname,
-	  passwd: passwd
-	});
-  }
-
-
+function check(){
+	var id=$(".box2 #phone").val();
+	var nickname=$("#authCode2").val();
+	var passwd= $(".box2 .password").val();
+	var confirm=$(".box2 .email").val();
+	console.log(id+nickname+passwd+confirm);
+}
 
 $('#finalSubmit').bind("click",function(){
 
 	var id=$(".box2 #phone").val();
-	var nickname=$(".box2 .phonekey").val();
+	var nickname=$("#authCode2").val();
 	var passwd= $(".box2 .password").val();
 	var confirm=$(".box2 .email").val();
-	if(id=="" || nickname=="" || passwd=="" || passwd!=confirm){
+	if(id=="" || nickname=="" || passwd=="" || confirm==""|| passwd!=confirm){
+		alert("please write all thing");
 	}
 	else{
 		firebase.auth().createUserWithEmailAndPassword(id, passwd).then(function(user) {
