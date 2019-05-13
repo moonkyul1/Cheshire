@@ -67,7 +67,7 @@ var feedstring="<div class=\"feed\">\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
 <img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);piclike(this);\">\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"location.href=\'../../gift/reward/reward.html\'\">\
+<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
 </div>\
 </div>";
 return feedstring;
@@ -86,10 +86,8 @@ return feedstring;
     return firebase.database().ref('/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
       var keyList = Object.keys(myValue);
-      console.log(likelist)
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
-        console.log(currentKey)
         if(likelist.indexOf(currentKey) != -1){
           $('#container').append(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture, currentKey));
         }
@@ -191,6 +189,9 @@ function piclike(Obj){
   
 }
 
+function modalTestFn(){
+  $("#myModal").modal();
+}
 
 $(document.body).on('touchstop', onScroll); // for mobile
 $(window).on('scroll', onScroll); 
