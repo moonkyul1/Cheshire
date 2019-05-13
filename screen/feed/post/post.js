@@ -34,6 +34,32 @@ second=second+tp;
     }
   });
 
+  $("#commentsubmit").click(function(){
+    if(tagname.value!=''){
+
+      var second="";
+    
+var tp="\
+<div class=\"row comment\">\
+<div class=\"col-sm-3 username\">\
+@"+usernickname+"\
+</div>\
+<div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
+"+tagname.value+"\
+</div>\
+</div>\
+"
+    second=second+tp;
+            
+            
+        
+              $('#container').append(second);
+              writeToDatabase('@'+usernickname,tagname.value)
+              tagname.value='';
+          }
+  })
+
+
 var namelist=[];
 var commentlist=[];
 
