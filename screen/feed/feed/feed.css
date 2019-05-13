@@ -166,3 +166,24 @@
     margin-bottom:44px;
     width: 20%;
 }
+ 
+.modal{
+    font-size: 36px;
+  }
+
+
+.btn{
+font-size: 24px;
+}
+
+.tabtitle{
+    padding-left: 20px;
+}
+
+.cfimage{
+width: 75px;
+height: 75px;
+object-fit: cover;
+border-radius: 50%;
+margin-top: 50%;
+}
