@@ -246,3 +246,13 @@ function jbFunc() {
   var a = document.getElementById( 'prog' ).value;
   document.getElementById( 'prog' ).value = a*1 + 10;
 }
+
+function JbFunc2() {
+  var a = document.getElementById( 'prog2' ).value;
+  document.getElementById( 'prog2' ).value = a*1 + 10;
+}
+
+function JbFunc3() {
+  var a = document.getElementById( 'prog3' ).value;
+  document.getElementById( 'prog3' ).value = a*1 + 10;
+}
