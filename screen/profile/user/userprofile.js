@@ -31,6 +31,19 @@ $("#logout").click(function() {
 
 });
 
+$('#charge').click(function(){
+  if(confirm("Do you want to charge 10$?")){
+    alert("Charged");
+    usercredit=usercredit*1+10;
+  }
+  firebase.database().ref('/user/'+users.uid+"/funding").set({
+    cost:usercost,
+    credit:usercredit,
+    list:userlist,
+    num:usernum
+  });
+})
+
 function feedmake(keylist,imglist){
   console.log(keylist);
   var a = parseInt(imglist.length/3);
@@ -181,6 +194,10 @@ var fss="\
 //readFromSave();
 
 
+var usercredit;
+var usercost;
+var usernum;
+var userlist;
 
 function readnumcost(user) {
 
@@ -196,11 +213,18 @@ function readnumcost(user) {
         var currentKey = keyList[i];
         console.log(currentKey+myValue[currentKey]);
         if(currentKey=='num'){
-          
+          usernum=myValue[currentKey];
           $('#num').text(myValue[currentKey]);
         }
-        if(currentKey=='cost'){
+        else if(currentKey=='cost'){
+          usercost=myValue[currentKey];
           $('#cost').text(myValue[currentKey]+"$");
+        }
+        else if(currentKey=='credit'){
+          usercredit=myValue[currentKey];
+        }
+        else if(currentKey=='list'){
+          userlist=myValue[currentKey];
         }
           
       }
@@ -214,8 +238,11 @@ function readnumcost(user) {
   });
 }
 
+  
+var users;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    users=user;
     // User is signed in.
     //var imglist=[];
     readnumcost(user);
