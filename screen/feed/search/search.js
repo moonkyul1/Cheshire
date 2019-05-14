@@ -38,6 +38,7 @@ function like(Obj){
   var img1=$(Obj).attr("src")
   con=img1;
   var akey= $(Obj).parent().attr("id");
+  console.log(akey);
   var user = firebase.auth().currentUser;
   if(img1.indexOf('_selected')==-1){
       img1=img1.replace('.png','_selected.png');
@@ -65,7 +66,7 @@ function like(Obj){
 function makefeed(img,name,picture,altkey){
   var feedstring="<div class=\"feed\">\
   <div class=header>\
-  <div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+  <div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
   <div class=\"name\">"+name+"</div>\
   <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
   </div>\
@@ -82,7 +83,7 @@ function makefeed(img,name,picture,altkey){
   function makelikefeed(img,name,picture,altkey){
   var feedstring="<div class=\"feed\">\
   <div class=header>\
-  <div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+  <div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
   <div class=\"name\">"+name+"</div>\
   <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
   </div>\

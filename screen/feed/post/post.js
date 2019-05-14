@@ -75,19 +75,6 @@ var commentlist=[];
   firebase.initializeApp(config);
   var con;
   
-  function like(Obj){
-      var img1=$(Obj).attr("src")
-      con=img1;
-      if(img1.indexOf('_selected')==-1){
-          img1=img1.replace('.png','_selected.png');
-          $(Obj).attr("src",img1)
-      }
-      else{
-          img1=img1.replace('_selected.png','.png');
-          $(Obj).attr("src",img1)
-      }
-  }
-  
   var mykey;
 
   function readFromSave(){
@@ -128,7 +115,7 @@ function like(Obj){
 function makefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
-<div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
 <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
 </div>\
@@ -145,7 +132,7 @@ return feedstring;
 function makelikefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
-<div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
 <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
 </div>\
@@ -170,6 +157,15 @@ function picarchive(Obj){
   });
 }
 
+
+function save(Obj){
+  firebase.database().ref('/save/').remove();
+  var newKey = firebase.database().ref('/save/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    key: akey
+  });
+}
 
 
 function alertTestFn(){
