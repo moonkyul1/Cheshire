@@ -42,11 +42,7 @@ function like(Obj){
         //push
     }
 }
-var catname="";
 
-function namemake(Obj){
-  catname=$(Obj).parent().parent().children().children()[1].innerHTML;
-}
  
 function makefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
@@ -443,6 +439,12 @@ function clickFunding4(catname) {
       }
     }
   });
+}
+
+var catname="";
+
+function namemake(Obj){
+  catname=$(Obj).parent().parent().children().children()[1].innerHTML;
 }
 
 function readfunding(catname) {
