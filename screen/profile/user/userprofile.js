@@ -122,8 +122,7 @@ var fss="\
             var nickname=myValue[currentKey];
             $('#username').text(nickname);
           }
-            //$('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
-            //$('#feedcontainer').prepend(feedmake(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture));
+            
         }
       }
       
@@ -157,7 +156,7 @@ var fss="\
     return firebase.database().ref('/user/'+user.uid+'/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
       if(myValue==null){
-        
+        $('#postnum').text('0');
       }
       else{
         var keyList = Object.keys(myValue);
@@ -166,6 +165,7 @@ var fss="\
           keylist.push(myValue[currentKey].postnum);
           imglist.push(myValue[currentKey].postnum);
         }
+        $('#postnum').text(keyList.length);
       }
       
       //imglist;
@@ -180,10 +180,45 @@ var fss="\
     
 //readFromSave();
 
+
+
+function readnumcost(user) {
+
+  return firebase.database().ref('/user/'+user.uid+'/funding/').once('value',function(snapshot){
+    var myValue = snapshot.val();
+    if(myValue == null){
+      $('#num').text('0');
+      $('#cost').text('0$');
+    }
+    else{
+      var keyList = Object.keys(myValue);
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        console.log(currentKey+myValue[currentKey]);
+        if(currentKey=='num'){
+          
+          $('#num').text(myValue[currentKey]);
+        }
+        if(currentKey=='cost'){
+          $('#cost').text(myValue[currentKey]+"$");
+        }
+          
+      }
+    }
+    
+    //imglist;
+    //imglist=parseImage(imglist);
+    //console.log("afterimglist is")
+    //console.log(imglist);
+    
+  });
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     //var imglist=[];
+    readnumcost(user);
     readFromDatabase(user);
     readFromimg(user).then(
       function(){

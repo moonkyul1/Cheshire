@@ -1,5 +1,13 @@
 
+var tagname= document.getElementById('password');  
 
+
+tagname.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      readFromDatabase();
+    }
+  });
 //
 // $(function() {
 // 	//  create_code
