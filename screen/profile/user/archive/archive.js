@@ -43,17 +43,17 @@ function feedmake(keylist,imglist){
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[i]+"><img src="+"../"+imglist[i] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[i]+"><img src="+"../"+imglist[i] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[i+1]+"><img src="+"../"+imglist[i+1] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[i+1]+"><img src="+"../"+imglist[i+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[i+2]+"><img src="+"../"+imglist[i+2] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[i+2]+"><img src="+"../"+imglist[i+2] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   </div>\
@@ -67,7 +67,7 @@ function feedmake(keylist,imglist){
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
@@ -85,12 +85,12 @@ function feedmake(keylist,imglist){
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
   <a href=\"#\">\
-  <div id="+keylist[a*3+1]+"><img src="+"../"+imglist[a*3+1] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+  <div id="+keylist[a*3+1]+"><img src="+"../"+imglist[a*3+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
@@ -175,3 +175,11 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+function simpleLightbox(imageUrl){
+  window.open('', 'simpleLightbox').document.write('<html><head><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, width=device-width" /></head><body bgcolor = "#000000" style="margin:0;  height:100%;" onclick="javascript:window.close(\'simpleLightbox\');"><table border="0" width="100%" height="100%"><tr><td valign="middle" align="center"><img style="position:relative;z-index:2;width:100%; object-fit: cover;" src="'+imageUrl+'"/></td></tr></table></body></html>');
+}
+
+
+function check(Obj){
+  simpleLightbox($(Obj).attr('src'));
+}
