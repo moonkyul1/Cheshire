@@ -184,9 +184,8 @@ function check(Obj){
   simpleLightbox($(Obj).attr('src'));
 }
 
-function deleteOverlay() {
+function deleteOverlay(){
 
-  // document.getElementById("delBtn").appendChild(overlay);
   var x = document.querySelectorAll(".addhere");
   for(var i = 0; i < x.length; i++){
     var overlay = document.createElement("img");
@@ -196,4 +195,20 @@ function deleteOverlay() {
     // x[i].
     // x[i].style.backgroundColor = "red";
   }
+
+  document.getElementById("delBtn").style = "display:none";
+  document.getElementById("canBtn").style = "display.block";
+}
+
+function cancelOverlay(){
+  $('.overlay_transparent').remove();
+  // var x = document.querySelectorAll(".overlay_transparent");
+  // for(var i = 0; i < x.length; i++){
+  //   x[i].style = "display:none";
+  //   // x[i].
+  //   // x[i].style.backgroundColor = "red";
+  // }
+
+  document.getElementById("canBtn").style = "display:none";
+  document.getElementById("delBtn").style = "display.block";
 }
