@@ -159,3 +159,16 @@
     margin-bottom:44px;
     width: 20%;
 }
+
+.toast{
+    position: fixed;
+    bottom: 180px;
+    text-align: center;
+    max-width: 1080px;
+}
+
+.toast-header{
+  padding: 20px;
+  text-align: center;
+  font-size: 36px;
+}
