@@ -36,6 +36,7 @@
     background-color:#F0f0f0;
     border:0;
     outline:0;
+    font-size:36px;
 }
 #xBtn{
     float:right;
@@ -158,4 +159,38 @@
     margin-top:44px;
     margin-bottom:44px;
     width: 20%;
+}
+
+.toast{
+    position: fixed;
+    bottom: 180px;
+    text-align: center;
+    max-width: 1080px;
+}
+
+.toast-header{
+  padding: 20px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.modal{
+    font-size: 36px;
+  }
+
+
+.btn{
+font-size: 24px;
+}
+
+.tabtitle{
+    padding-left: 20px;
+}
+
+.cfimage{
+width: 75px;
+height: 75px;
+object-fit: cover;
+border-radius: 50%;
+margin-top: 50%;
 }

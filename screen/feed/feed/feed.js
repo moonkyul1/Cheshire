@@ -24,6 +24,7 @@ function like(Obj){
         $(Obj).attr("src",img1);
         
         var akey= $(Obj).parent().attr("id");
+        likelist.push(akey);
         //console.log(user.uid);
         var newKey = firebase.database().ref('/user/'+user.uid+'/like/'+akey+"/").push();
         newKey.set({
@@ -35,6 +36,8 @@ function like(Obj){
         img1=img1.replace('_selected.png','.png');
         $(Obj).attr("src",img1)
         firebase.database().ref('/user/' +user.uid+'/like/'+akey+'/').remove();
+        var index=likelist.indexOf(akey);
+        likelist.splice(index,1);
         //push
     }
 }
@@ -49,7 +52,7 @@ var feedstring="<div class=\"feed\">\
 <div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
-<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);piclike(this);\">\
+<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);\">\
 <img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
 </div>\
 </div>";
@@ -66,7 +69,7 @@ var feedstring="<div class=\"feed\">\
 <div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
-<img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);piclike(this);\">\
+<img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);\">\
 <img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
 </div>\
 </div>";
@@ -185,9 +188,6 @@ function picarchive(Obj){
   });
 }
 
-function piclike(Obj){
-  
-}
 
 function modalTestFn(){
   $("#myModal").modal();

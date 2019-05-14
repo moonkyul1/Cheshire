@@ -99,25 +99,90 @@ var commentlist=[];
       });
   }
 
-function feedmake(imgsrc,name,contentsrc){
-var fs="\
-<div class=\"feed\">\
-<div class=header>\
-<img class=\"img\" src="+imgsrc+">\
-<div class=\"name\">"+name+"</div>\
-<img class=\"more\" src=../../../image/icon/menu.png>\
-<img class=\"archive\" src=../../../image/icon/bookmark.png>\
-</div>\
-<div class=\"content\" ><img id=\"contentid\" src="+contentsrc+"></div>\
-<div class=\"accessory\">\
-<img id=\"commentIcon\" src=../../../image/icon/message_selected.png>\
-<img id=\"like\" src=../../../image/icon/heart.png onclick=like(this)>\
-<img id=\"feedgift\" src=../../../image/icon/cf.png>\
-</div>\
-</div>\
-"
-return fs;
+
+function like(Obj){
+  var img1=$(Obj).attr("src")
+  con=img1;
+  var akey= $(Obj).parent().attr("id");
+  var user = firebase.auth().currentUser;
+  if(img1.indexOf('_selected')==-1){
+      img1=img1.replace('.png','_selected.png');
+      $(Obj).attr("src",img1);
+      
+      var akey= $(Obj).parent().attr("id");
+      //console.log(user.uid);
+      var newKey = firebase.database().ref('/user/'+user.uid+'/like/'+akey+"/").push();
+      newKey.set({
+        postnum: akey
+      });
+      //del
+  }
+  else{
+      img1=img1.replace('_selected.png','.png');
+      $(Obj).attr("src",img1)
+      firebase.database().ref('/user/' +user.uid+'/like/'+akey+'/').remove();
+      //push
+  }
 }
+
+function makefeed(img,name,picture,altkey){
+var feedstring="<div class=\"feed\">\
+<div class=header>\
+<div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"name\">"+name+"</div>\
+<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
+</div>\
+<div class=\"content\"><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
+<div class=\"accessory\" id="+altkey+">\
+<img id=\"comment\" src=../../../image/icon/message.png>\
+<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);\">\
+<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
+</div>\
+</div>";
+return feedstring;
+}
+
+function makelikefeed(img,name,picture,altkey){
+var feedstring="<div class=\"feed\">\
+<div class=header>\
+<div class=\"content\" id="+altkey+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"name\">"+name+"</div>\
+<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
+</div>\
+<div class=\"content\"><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
+<div class=\"accessory\" id="+altkey+">\
+<img id=\"comment\" src=../../../image/icon/message.png>\
+<img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);\">\
+<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn()\">\
+</div>\
+</div>";
+return feedstring;
+}
+
+function picarchive(Obj){
+  var user = firebase.auth().currentUser;
+  var akey= $(Obj).parent().attr("id");
+  //console.log(user.uid);
+  var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    postnum: akey
+  });
+}
+
+
+
+function alertTestFn(){
+  $('.toast').toast({delay: 700});
+  $('.toast').toast('show');
+}
+
+
+
+
+
+
+
 
 function makemid(photoby,tag){
 var first="\
@@ -187,6 +252,28 @@ return fs;
 }
 
 
+    function readFromLike(user,likelist) {
+      /*
+        Read comments from the database
+        Print all the comments to the table
+      */
+      return firebase.database().ref('/user/'+user.uid+'/like/').once('value',function(snapshot){
+        var myValue = snapshot.val();
+        if(myValue == null){
+
+        }
+        else{
+          var keyList = Object.keys(myValue);
+          for (var i=0;i<keyList.length;i++){
+            var currentKey = keyList[i];
+            likelist.push(currentKey);
+          }
+        }
+        
+      });
+    }
+
+
 
     function readFromDatabase() {
       /*
@@ -201,7 +288,12 @@ return fs;
           if(currentKey == mykey){
             console.log("find!" + " " +myValue[currentKey].name);
             $('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
-            $('#feedcontainer').prepend(feedmake(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture));
+            if(likelist.indexOf(mykey) != -1){
+              $('#feedcontainer').prepend(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
+            }
+            else{
+              $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
+            }
             readFromComment();
             
           }
@@ -267,10 +359,21 @@ function readnickname(user) {
   });
 }
 
+var likelist=[]
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     readnickname(user);
+    readFromLike(user,likelist);
   } else {
     usernickname="(imsi)";
   }
 });
+
+function modalTestFn(){
+  $("#myModal").modal();
+}
+
+function jbFunc() {
+  var a = document.getElementById( 'prog' ).value;
+  document.getElementById( 'prog' ).value = a*1 + 10;
+}
