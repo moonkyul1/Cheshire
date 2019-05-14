@@ -90,7 +90,17 @@ $('#finalSubmit').bind("click",function(){
 			//console.log(user.uid)
 			var db = firebase.database().ref('/user/').child(user.uid);
 			db.set({
-			   nickname:nickname,
+			   nickname:nickname
+			}).then(function(){
+				var user = firebase.auth().currentUser;
+				//console.log(user.uid)
+				var db2 = firebase.database().ref('/user/'+user.uid+"/funding/");
+				db2.set({
+					credit:10,
+					cost:0,
+					num:0,
+					list: ""
+				})
 			}).then(function(){
 				alert("register complete!");
 				location.href='./login.html';

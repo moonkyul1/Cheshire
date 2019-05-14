@@ -231,7 +231,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     );
   } else {
-    alert("no sing");
+    alert("Bye Bye :)");
     // No user is signed in.
   }
 });

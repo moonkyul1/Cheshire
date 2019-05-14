@@ -147,7 +147,7 @@ return feedstring;
   
       );
     } else {
-      alert("no sing");
+      alert("no login");
       // No user is signed in.
     }
   });

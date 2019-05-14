@@ -115,7 +115,7 @@ function like(Obj){
 function makefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
-<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
 <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
 </div>\
@@ -132,7 +132,7 @@ return feedstring;
 function makelikefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
-<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"save(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
+<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
 <div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
 </div>\
@@ -641,4 +641,13 @@ function JbFunc3() {
 
 function JbFunc4() {
   clickFunding4(catname);
+}
+
+function find(Obj){
+  firebase.database().ref('/find/').remove();
+  var newKey = firebase.database().ref('/find/').push();
+  var akey= $(Obj).parent().attr("id");
+  newKey.set({
+    key: akey
+  });  
 }

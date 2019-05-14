@@ -62,5 +62,5 @@ firebase.auth().onAuthStateChanged(function(user) {
   
 
   function accessn(){
-      alert("will update soon :)");
+      alert("You are not a catmom!");
   }
