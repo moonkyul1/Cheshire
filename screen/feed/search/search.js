@@ -182,3 +182,12 @@ function alertTestFn(){
   $('.toast').toast({delay: 700});
   $('.toast').toast('show');
 }
+
+function modalTestFn(){
+  $("#myModal").modal();
+}
+
+function jbFunc() {
+  var a = document.getElementById( 'prog' ).value;
+  document.getElementById( 'prog' ).value = a*1 + 10;
+}

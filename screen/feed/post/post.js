@@ -368,3 +368,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     usernickname="(imsi)";
   }
 });
+
+function modalTestFn(){
+  $("#myModal").modal();
+}
+
+function jbFunc() {
+  var a = document.getElementById( 'prog' ).value;
+  document.getElementById( 'prog' ).value = a*1 + 10;
+}
