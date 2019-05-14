@@ -198,6 +198,47 @@ function readFromimg(catname) {
   });
 }
 
+var namelist=[];
+var totaln=0;
+function readtotal(catname) {
+  /*
+     Read comments from the database
+     Print all the comments to the table
+  */
+  return firebase.database().ref('/cat/'+catname+'/project/').once('value',function(snapshot){
+    var myValue = snapshot.val();
+    if(myValue==null){
+      console.log(catname);
+    }
+    else{
+      console.log("123");
+      var keyList = Object.keys(myValue);
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        var aa=myValue[currentKey].by.split('////');
+        for(var j = 0 ; j<aa.length;j++){
+          if(aa[j]!="" && namelist.indexOf(aa[j])==-1){
+            namelist.push(aa[i]);      
+          }
+        }
+        
+        totaln=totaln+myValue[currentKey].current*1;
+        
+      }
+      console.log("Aaaa")
+      console.log(totaln);
+      console.log(namelist);
+      $('#totalnum').text(totaln+"$");
+      $('#fundednum').text(namelist.length);
+    }
+    
+    //imglist;
+    //imglist=parseImage(imglist);
+    //console.log("afterimglist is")
+    //console.log(imglist);
+    
+  });
+}
 
 function readFunding(catname) {
   /*
@@ -703,8 +744,11 @@ if (user) {
   // User is signed in.
   //var imglist=[];
   readcredit(user);
+  
   readFromFind().then(function(){
+    
     readFromDatabase(catname);
+    readtotal(catname);
     readFunding(catname);
     readFromimg(catname).then(function(){
       if(imglist.length != 0){
