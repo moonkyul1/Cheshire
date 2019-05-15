@@ -1,12 +1,94 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="mainupload.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Cheshire</title>
 </head>
 <body>
     <div id="div_root">
+        <div id="footer">
+          <div id="footer1">
+            <div id="imgcontainer" class="userfeed container2">
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat1"><img src="../../../image/picture/cat1.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat2"><img src="../../../image/picture/cat2.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat3"><img src="../../../image/picture/cat3.png" class="selectImg"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat4"><img src="../../../image/picture/cat4.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat14"><img src="../../../image/picture/cat14.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat6"><img src="../../../image/picture/cat6.png" class="selectImg"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat7"><img src="../../../image/picture/cat7.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat13"><img src="../../../image/picture/cat13.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat9"><img src="../../../image/picture/cat9.png" class="selectImg"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat10"><img src="../../../image/picture/cat10.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat11"><img src="../../../image/picture/cat11.png" class="selectImg"></div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                  <div class="cat-box" id="cat12"><img src="../../../image/picture/cat12.png" class="selectImg"></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="footer2">
+            <div>select img</div>
+          </div>
+          
+        
+        </div>
+        
+        
         <div id="div_main">
             <img id="back" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
             <div id="backname">back</div>
@@ -31,24 +113,21 @@
             <div id="addimage">
                 <form id="form1" runat="server">
                     <div class="image-upload">
-                        <label for="filename">
+                        <!-- <label for="filename"> -->
                             <div id ="img-box">
                                 <img id="test1" src="../../../image/assets/image.png"/>
                             </div>
-                        </label>
-                        <input id="filename" name="filename" type="file" accept="image/gif, image/jpeg, image/png" />
+                        <!-- </label> -->
+                        <!-- <input id="filename" name="filename" type="file" accept="image/gif, image/jpeg, image/png" /> -->
                     </div>
                 </form>
             </div>
 
             <div id="next">
-                <button id="nextbtn" onclick="location.href='../detail/dupload.html'">NEXT</button>
+                <button id="nextbtn" onclick="location.href='../detail/dupload.html'" disabled>NEXT</button>
             </div>
-            
-
-
         </div>
-        
+
     </div>
 
 <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
