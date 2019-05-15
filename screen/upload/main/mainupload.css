@@ -32,7 +32,7 @@
 #container{
     padding-top:160px;
     width:100%;
-    height:1760px;
+    height:1840px;
     background-color: #F0F0F0;
 }
 
@@ -163,7 +163,7 @@ input::placeholder {
 
 #next{
     float:right;
-    margin-top:530px;
+    margin-top:460px;
     margin-right:60px;
     
 }
@@ -171,7 +171,84 @@ input::placeholder {
 #nextbtn{
     width:332px;
     height:102px;
-    background-color:#7B7B7B;
+    background-color:rgb(105, 105, 105);
     color:#FFFFFF;
     font-size:40px;
 }
+#nextbtn:disabled{
+    width:332px;
+    height:102px;
+    background-color:rgb(187, 187, 187);
+    color:#FFFFFF;
+    font-size:40px;
+}
+
+
+
+
+
+#footer {
+    width:1080px;
+    height: 600px;
+    position: fixed;
+    bottom: 0;
+    background-color: #d7d8dc;
+    text-align: center;
+    overflow: scroll;
+    display: none;
+}
+
+.container2{
+    max-width: 1080px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+  
+.userfeed{
+    width: auto;
+    padding-bottom: 300px;
+}
+  
+.col-sm{
+    display: block;
+  
+    height: auto;
+    /* position: relative; */
+    overflow: hidden;
+    padding: 34.37% 0 0 0;
+}
+  
+.selectImg{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 1%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
