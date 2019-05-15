@@ -55,8 +55,11 @@ var catplace=catinfo[1];
 var catpicture=catinfo[2];
 var taginfo=[];
 var cattag="";
+
+var users;
 $('#nextbtn').on('click',function(){
   var user = firebase.auth().currentUser;
+  users=user;
   var captioninfo = $('#captionname').val();
   for(var i=0;i<taginfo.length;i++){
     if(i==0){
@@ -139,6 +142,7 @@ function writetopost(usernickname,catprofile,catname,catpicture,catplace,cattag)
     key=newKey;
     newKey.set({
       by:usernickname,
+      byuid:users.uid,
       img:catprofile,
       name:catname,
       picture:catpicture,
@@ -151,6 +155,7 @@ function writetopost(usernickname,catprofile,catname,catpicture,catplace,cattag)
     key=newKey;
     newKey.set({
       by:usernickname,
+      byuid:users.uid,
       img:catprofile,
       name:catname,
       picture:catpicture,
@@ -167,7 +172,8 @@ function writetopostcomment(usernickname,captioncomment,key){
   usernickname='@'+usernickname;
   newKey.set({
     comment:captioncomment,
-    name:usernickname
+    name:usernickname,
+    byuid:users.uid
   });
 }
 

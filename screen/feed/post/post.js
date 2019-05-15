@@ -14,7 +14,7 @@ tagname.addEventListener("keyup", function(event) {
 
 var tp="\
 <div class=\"row comment\">\
-<div class=\"col-sm-3 username\">\
+<div id=\""+ users.uid+"\" class=\"col-sm-3 username\">\
 @"+usernickname+"\
 </div>\
 <div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
@@ -62,6 +62,7 @@ var tp="\
 
 var namelist=[];
 var commentlist=[];
+var uidlist=[];
 
   var config = {
       apiKey: "AIzaSyAqBEOGJ6QCmFO7ff6sP0pVmpJoWgYnl1U",
@@ -173,17 +174,21 @@ function alertTestFn(){
   $('.toast').toast('show');
 }
 
+function goprofile(Obj){
+  var uid= $(Obj).attr("id");
+  sessionStorage.setItem('photouid', uid);
+  location.href='../../profile/otheruser/ouserprofile.html';
+}
 
 
 
 
 
 
-
-function makemid(photoby,tag){
+function makemid(uid,photoby,tag){
 var first="\
 <div class=\"tabtitle\">\
-PHOTOGRAPHED BY: <span class=\"username\">"+photoby+"</span>\
+PHOTOGRAPHED BY: <span id=\""+uid+"\" class=\"username\" onclick=goprofile(this);>"+photoby+"</span>\
 </div>\
 ";
 var second="\
@@ -233,7 +238,7 @@ else{
     for(var i = 0 ; i<commentlist.length;i++){
 var tp="\
 <div class=\"row comment\">\
-<div class=\"col-sm-3 username\">\
+<div id=\""+uidlist[i]+"\" class=\"col-sm-3 username\" onclick=goprofile(this);>\
 "+namelist[i]+"\
 </div>\
 <div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
@@ -289,7 +294,7 @@ return fs;
           var currentKey = keyList[i];
           if(currentKey == mykey){
             console.log("find!" + " " +myValue[currentKey].name);
-            $('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
+            $('#feedcontainer').prepend(makemid(myValue[currentKey].byuid,myValue[currentKey].by, myValue[currentKey].tag));
             if(likelist.indexOf(mykey) != -1){
               $('#feedcontainer').prepend(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
             }
@@ -320,6 +325,7 @@ return fs;
               var currentKey = keyList[i];
               namelist.push(myValue[currentKey].name);
               commentlist.push(myValue[currentKey].comment);
+              uidlist.push(myValue[currentKey].byuid);
             }
           $('#container').append(makecomment());
           }
@@ -333,6 +339,7 @@ return fs;
           newKey.set({
             //location of dictionary
             name: name,
+            byuid: users.uid,
             comment: comment
           });
         }

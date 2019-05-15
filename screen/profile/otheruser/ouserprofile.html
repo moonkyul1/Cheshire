@@ -1,0 +1,52 @@
+<head>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <meta name="viewport" content="width=1080, user-scalable=no" >
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="ouserprofile.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Profile</title>
+</head>
+<body>
+  <div id="div_root">
+    <div id="feedcontainer">
+      <div class="displays">
+        <img id="profile" src=../../../image/assets/profileicon.png></img>
+        <div class="stats">
+          <div id="postnum" class="stat"></div>
+          <div id="num" class="stat"></div>
+          <div id="cost" class="stat"></div>
+          <div class="stattext">posts</div>
+          <div class="stattext">gifts</div>
+          <div class="stattext">total</div>
+        </div>
+        
+
+        <div id="checkerror"></div>
+      </div>
+      <div id="imgcontainer" class="userfeed container">
+
+      </div>
+    </div>
+    <!-- the top bar stays on top -->
+    <div id="div_main">
+      <img id="goBackBtn" src=../../../image/icon/goback.png onclick="history.back()">
+      <div id="username" class="name"></div>
+    </div>
+
+    <div id="footer">
+        <div id="tab" onclick="location.href='../../feed/feed/feed.html'"><img src=../../../image/icon/feed.png></div>
+        <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
+        <div id="tab" onclick="location.href='../../upload/main/mainupload.html'"><img src=../../../image/icon/upload.png></div>
+        <div id="tab" onclick="location.href='../../notification/notification.html'"><img src=../../../image/icon/noti.png></div>
+        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile.png></div>
+    </div>
+
+  </div>
+
+  <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
+  <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="./ouserprofile.js"></script>
+
+</body>
