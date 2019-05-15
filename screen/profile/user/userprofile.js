@@ -42,6 +42,7 @@ $('#charge').click(function(){
     list:userlist,
     num:usernum
   });
+  $('#currentAmountLeft').text(usercredit+'$');
 })
 
 function feedmake(keylist,imglist){
@@ -222,6 +223,7 @@ function readnumcost(user) {
         }
         else if(currentKey=='credit'){
           usercredit=myValue[currentKey];
+          $('#currentAmountLeft').text(usercredit+'$');
         }
         else if(currentKey=='list'){
           userlist=myValue[currentKey];

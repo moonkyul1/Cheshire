@@ -151,12 +151,41 @@ function feedmake(keylist,imglist){
     });
   }
 
+  function readFromArchive(user,did) {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/user/'+user.uid+'/archieve/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      if(myValue == null){
+
+      }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          if(myValue[currentKey].postnum == did){
+            firebase.database().ref('/user/'+users.uid+'/archieve/'+currentKey).remove();
+          }
+        }
+      }
+
+      //imglist;
+      //imglist=parseImage(imglist);
+      //console.log("afterimglist is")
+      //console.log(imglist);
+
+    });
+  }
+
 
 
 //readFromSave();
-
+var users;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    users=user;
     // User is signed in.
     //var imglist=[];
     readFromimg(user).then(
@@ -183,7 +212,7 @@ function simpleLightbox(imageUrl){
 function check(Obj){
   simpleLightbox($(Obj).attr('src'));
 }
-
+var c;
 function deleteOverlay(){
 
   var x = document.querySelectorAll(".addhere");
@@ -191,6 +220,21 @@ function deleteOverlay(){
     var overlay = document.createElement("img");
     overlay.src = "../../../../image/assets/del_overlay.png";
     overlay.className = "overlay_transparent";
+    overlay.onclick=function(){
+      var did= this.parentElement.id;
+      console.log('/user/'+users.uid+'/archieve/'+did);
+      if(confirm('Do you want to delete this archive?')){
+        readFromArchive(users,did).then(function(){
+          location.href='./archive.html';
+        });
+      }
+      else{
+
+      }
+      
+
+
+    };
     x[i].appendChild(overlay);
     // x[i].
     // x[i].style.backgroundColor = "red";
@@ -199,6 +243,7 @@ function deleteOverlay(){
   document.getElementById("delBtn").style = "display:none";
   document.getElementById("canBtn").style = "display.block";
 }
+
 
 function cancelOverlay(){
   $('.overlay_transparent').remove();
