@@ -8,7 +8,7 @@ var config = {
 };
 
 var catname;
-
+var todaydate=datefind();
 firebase.initializeApp(config);
 
 function readFromFind(){
@@ -371,7 +371,8 @@ function clickFunding1(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT FOOD"
+                      sort: "CAT FOOD",
+                      date: todaydate
                     });
                   }
                 }
@@ -400,7 +401,8 @@ function clickFunding1(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT FOOD"
+                sort: "CAT FOOD",
+                date:todaydate
               });
               
             }
@@ -478,7 +480,8 @@ function clickFunding2(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "BLANKET"
+                      sort: "BLANKET",
+                      date:todaydate
                     });
                   }
                 }
@@ -507,7 +510,8 @@ function clickFunding2(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "BLANKET"
+                sort: "BLANKET",
+                date:todaydate
               });
               
             }
@@ -585,7 +589,8 @@ function clickFunding3(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT TOY"
+                      sort: "CAT TOY",
+                      date:todaydate
                     });
                   }
                 }
@@ -614,7 +619,8 @@ function clickFunding3(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT TOY"
+                sort: "CAT TOY",
+                date:todaydate
               });
               
             }
@@ -692,7 +698,8 @@ function clickFunding4(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT HOUSE"
+                      sort: "CAT HOUSE",
+                      date:todaydate
                     });
                   }
                 }
@@ -721,7 +728,8 @@ function clickFunding4(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT HOUSE"
+                sort: "CAT HOUSE",
+                date:todaydate
               });
               
             }
@@ -777,3 +785,15 @@ function JbFunc3() {
 function JbFunc4() {
   clickFunding4(catname);
 }
+
+
+function datefind(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+}
+var todaydate=datefind();

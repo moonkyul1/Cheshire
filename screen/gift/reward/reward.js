@@ -61,7 +61,11 @@ function readFromfunding(user) {
           
           var cn=myValue[currentKey].catname;
           var cs=myValue[currentKey].sort;
-          $('#feedcontainer').append(makefeed(cn,cs));
+          var cd=myValue[currentKey].date;
+          if(cd!=undefined){
+            $('#feedcontainer').append(makefeed(cn,cs,cd));
+          }
+          
         }
       }
       
@@ -73,7 +77,7 @@ function readFromfunding(user) {
     });
   }
 
-function makefeed(catname,sort){
+function makefeed(catname,sort,date){
 var fs="\
 <div class=\"history_box shadow-sm\">\
 <div class=\"history_title\">\
@@ -103,7 +107,7 @@ for\
 on&nbsp\
 </div>\
 <div class=\"date_content\">\
-3rd April 2019.\
+"+date+"\
 </div>\
 </div>\
 \
