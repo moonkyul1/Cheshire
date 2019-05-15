@@ -35,46 +35,46 @@ function feedmake(keylist,imglist){
     console.log(keylist);
     var a = parseInt(imglist.length/3);
     var b = imglist.length%3;
-  
+
   var first="";
   var second="";
     for(var i=0;i<a;i++){
   var fs="\
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[i]+"><img src="+"../"+imglist[i] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[i]+" class=\"addhere\"><img src="+"../"+imglist[i] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[i+1]+"><img src="+"../"+imglist[i+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[i+1]+" class=\"addhere\"><img src="+"../"+imglist[i+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[i+2]+"><img src="+"../"+imglist[i+2] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[i+2]+" class=\"addhere\"><img src="+"../"+imglist[i+2] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   </div>\
   ";
-  
+
       first=first+fs;
     }
-  
+
     if(b==1){
   var fss="\
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[a*3]+" class=\"addhere\"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
+  <a href=\"#\" >\
   </a>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
+  <a href=\"#\" >\
   </a>\
   </div>\
   ";
@@ -84,24 +84,24 @@ function feedmake(keylist,imglist){
   var fss="\
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[a*3]+"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[a*3]+" class=\"addhere\"><img src="+"../"+imglist[a*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
-  <div id="+keylist[a*3+1]+"><img src="+"../"+imglist[a*3+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <a href=\"#\" >\
+  <div id="+keylist[a*3+1]+" class=\"addhere\"><img src="+"../"+imglist[a*3+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
-  <a href=\"#\">\
+  <a href=\"#\" >\
   </a>\
   </div>\
   ";
       second=second+fss
     }
-  
-    return first+second;  
+
+    return first+second;
   }
 
 
@@ -118,7 +118,7 @@ function feedmake(keylist,imglist){
           }
         }
       }
-      
+
     });
   }
 
@@ -142,17 +142,17 @@ function feedmake(keylist,imglist){
           imglist.push(myValue[currentKey].postnum);
         }
       }
-      
+
       //imglist;
       //imglist=parseImage(imglist);
       //console.log("afterimglist is")
       //console.log(imglist);
-      
+
     });
   }
-  
 
-    
+
+
 //readFromSave();
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -182,4 +182,33 @@ function simpleLightbox(imageUrl){
 
 function check(Obj){
   simpleLightbox($(Obj).attr('src'));
+}
+
+function deleteOverlay(){
+
+  var x = document.querySelectorAll(".addhere");
+  for(var i = 0; i < x.length; i++){
+    var overlay = document.createElement("img");
+    overlay.src = "../../../../image/assets/del_overlay.png";
+    overlay.className = "overlay_transparent";
+    x[i].appendChild(overlay);
+    // x[i].
+    // x[i].style.backgroundColor = "red";
+  }
+
+  document.getElementById("delBtn").style = "display:none";
+  document.getElementById("canBtn").style = "display.block";
+}
+
+function cancelOverlay(){
+  $('.overlay_transparent').remove();
+  // var x = document.querySelectorAll(".overlay_transparent");
+  // for(var i = 0; i < x.length; i++){
+  //   x[i].style = "display:none";
+  //   // x[i].
+  //   // x[i].style.backgroundColor = "red";
+  // }
+
+  document.getElementById("canBtn").style = "display:none";
+  document.getElementById("delBtn").style = "display.block";
 }

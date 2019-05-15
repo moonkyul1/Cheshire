@@ -13,18 +13,18 @@
 
     <div id="feedcontainer">
       <div class="displays">
-        <img id="profile" src=../../../image/picture/cat1.png></img>
+        <img id="profile" src=../../../image/assets/catg.png></img>
         <div class="stats">
-          <div class="stat">123</div>
-          <div class="stat">13</div>
-          <div class="stat">712$</div>
+          <div id="postnum" class="stat">0</div>
+          <div id="fundednum" class="stat">0</div>
+          <div id="totalnum" class="stat">0$</div>
           <div class="stattext">post</div>
-          <div class="stattext">funded</div>
+          <div class="stattext">funded by</div>
           <div class="stattext">total</div>
         </div>
         <div>
           <!--<button type="button" class="btn btn-primary btn-lg displaysBtn">EDIT PROFILE</button> -->
-          
+
         </div>
       </div>
       <div id="crowdfunding">
@@ -46,16 +46,16 @@
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                      <progress id="prog1" value="30" max="100" class="progress" style="height:20px"></progress>
+                      <progress id="prog1" value="0" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
                   <div class="row" style="margin-left: 36px;">
                     <div class="col">
-                      <b>$30</b>
+                      <b id="cost1">$0</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary" onclick=JbFunc1()>DONATE</button>
+                      <button id="pbutton1" type="button" class="btn btn-primary" disabled=true; onclick=JbFunc1()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -77,16 +77,16 @@
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                      <progress id="prog2" value="60" max="100" class="progress" style="height:20px"></progress>
+                      <progress id="prog2" value="0" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
                   <div class="row" style="margin-left: 36px;">
                     <div class="col">
-                      <b>$30</b>
+                      <b id="cost2">$0</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary" onclick=JbFunc2()>DONATE</button>
+                      <button id="pbutton2" type="button" class="btn btn-primary" disabled=true; onclick=JbFunc2()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -110,16 +110,16 @@
                   <div style="height:20px"></div>
 
                   <div style="margin-left: 36px;">
-                      <progress id="prog3" value="10" max="100" class="progress" style="height:20px"></progress>
+                      <progress id="prog3" value="0" max="100" class="progress" style="height:20px"></progress>
                   </div>
                   <div style="height:20px"></div>
 
                   <div class="row" style="margin-left: 36px;">
                     <div class="col">
-                      <b>$30</b>
+                      <b id="cost3">$0</b>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-primary" onclick=JbFunc3()>DONATE</button>
+                      <button id="pbutton3" type="button" class="btn btn-primary" disabled=true; onclick=JbFunc3()>DONATE</button>
                     </div>
                   </div>
                 </div>
@@ -127,126 +127,46 @@
             </div>
 
             <div class="col">
+                <div class="row bottompadding">
+                    <div class="col-4">
+                      <!-- left column -->
+                      <img class="cfimage" src=../../../image/assets/cathouse.png></img>
+                    </div>
+                    <div class="col-8">
+                      <!-- right column -->
+                      <div class="row">
+                        <b class="tabtitle">HOUSE</b>
+                      </div>
+                      <div style="height:20px"></div>
+    
+                      <div style="margin-left: 36px;">
+                          <progress id="prog4" value="0" max="100" class="progress" style="height:20px"></progress>
+                      </div>
+                      <div style="height:20px"></div>
+    
+                      <div class="row" style="margin-left: 36px;">
+                        <div class="col">
+                          <b id="cost4">$0</b>
+                        </div>
+                        <div class="col">
+                          <button id="pbutton4" type="button" class="btn btn-primary" disabled=true; onclick=JbFunc4()>DONATE</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
 
         </div>
       </div>
-      <div class="userfeed container">
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
-        <!-- one row -->
-        <div class="row no-gutters">
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat1.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat2.png class="feedImg">
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-              <img src=../../../image/picture/cat3.png class="feedImg">
-            </a>
-          </div>
-        </div>
+      <div id="container" class="userfeed container">
+        
       </div>
     </div>
     <!-- the top bar stays on top -->
     <div id="div_main">
       <img id="goBackBtn" src=../../../image/icon/goback.png onclick="history.back()">
-      <div class="name">@kitty</div>
+      <div id="name" class="name"></div>
     </div>
 
     <div id="footer">
@@ -254,7 +174,7 @@
         <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
         <div id="tab" onclick="location.href='../../upload/main/mainupload.html'"><img src=../../../image/icon/upload.png></div>
         <div id="tab" onclick="location.href='../../notification/notification.html'"><img src=../../../image/icon/noti.png></div>
-        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile_selected.png></div>
+        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile.png></div>
     </div>
 
   </div>

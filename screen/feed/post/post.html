@@ -14,6 +14,168 @@
 
         <div id="feedcontainer">
 
+          <div class="w-50 mx-auto toast">
+            <div class="toast-header">
+                <strong id="mid" class="mr-auto text-seondary">This post has been archived.</strong>
+            </div>
+          </div>
+
+           <!-- The Modal -->
+           <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Crowdfunding Projects</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                    <div class="col">
+                        <!-- left crowdfunding item -->
+                        <div class="row">
+                        <div class="col-4">
+                            <!-- left column -->
+                            <img class="cfimage" src=../../../image/assets/catfood.png></img>
+                        </div>
+                        <div class="col-8">
+                            <!-- right column -->
+                            <div class="row">
+                            <b class="tabtitle">CAT FOOD</b>
+                            </div>
+                            <div style="height:20px"></div>
+
+                            <div style="">
+                            <progress id="prog1" value="0" max="100" class="progress" style="height:20px"></progress>
+                            </div>
+                            <div style="height:20px"></div>
+
+                            <div class="row" style="">
+                            <div id="cost1" class="col">
+                                <b>$0</b>
+                            </div>
+                            <div class="col">
+                                <button id="pbutton1" disabled=true type="button" class="btn btn-primary" onclick="JbFunc1()">DONATE</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- right crowdfunding item -->
+                        <div class="row">
+                        <div class="col-4">
+                            <!-- left column -->
+                            <img class="cfimage" src=../../../image/assets/blanket.png></img>
+                        </div>
+                        <div class="col-8">
+                            <!-- right column -->
+                            <div class="row">
+                            <b class="tabtitle">BLANKET</b>
+                            </div>
+                            <div style="height:20px"></div>
+
+                            <div style="">
+                            <progress id="prog2" value="0" max="100" class="progress" style="height:20px"></progress>
+                            </div>
+                            <div style="height:20px"></div>
+
+                            <div class="row" style="">
+                            <div id="cost2" class="col">
+                                <b>$0</b>
+                            </div>
+                            <div class="col">
+                                <button id="pbutton2" disabled=true type="button" class="btn btn-primary" onclick="JbFunc2()">DONATE</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <!-- left crowdfunding item -->
+                            <div class="row">
+                            <div class="col-4">
+                                <!-- left column -->
+                                <img class="cfimage" src=../../../image/assets/cattoy.png></img>
+                            </div>
+                            <div class="col-8">
+                                <!-- right column -->
+                                <div class="row">
+                                <b class="tabtitle">CAT TOY</b>
+                                </div>
+                                <div style="height:20px"></div>
+
+                                <div style="">
+                                <progress id="prog3" value="0" max="100" class="progress" style="height:20px"></progress>
+                                </div>
+                                <div style="height:20px"></div>
+
+                                <div class="row" style="">
+                                <div id="cost3" class="col">
+                                    <b>$0</b>
+                                </div>
+                                <div class="col">
+                                    <button id="pbutton3" disabled=true type="button" class="btn btn-primary" onclick="JbFunc3()">DONATE</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <!-- right crowdfunding item -->
+                            <div class="row">
+                            <div class="col-4">
+                                <!-- left column -->
+                                <img class="cfimage" src=../../../image/assets/cathouse.png></img>
+                            </div>
+                            <div class="col-8">
+                                <!-- right column -->
+                                <div class="row">
+                                <b class="tabtitle">CAT HOUSE</b>
+                                </div>
+                                <div style="height:20px"></div>
+
+                                <div style="">
+                                <progress id="prog4" value="0" max="100" class="progress" style="height:20px"></progress>
+                                </div>
+                                <div style="height:20px"></div>
+
+                                <div class="row" style="">
+                                <div id="cost4" class="col">
+                                    <b>$0</b>
+                                </div>
+                                <div class="col">
+                                    <button id="pbutton4" disabled=true type="button" class="btn btn-primary" onclick="JbFunc4()">DONATE</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+
+
+                </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
 
           <div class="comments sidewrap">
             <div class="container" , id="container">
@@ -44,6 +206,8 @@
 
 <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
 <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <script src="./post.js"></script>
 
 </body>
