@@ -48,7 +48,7 @@
     height:72px;
     margin-top:30px;
     margin-left:72px;
-    
+
 }
 
 input::placeholder {
@@ -125,7 +125,7 @@ input::placeholder {
     margin-top:44px;
     margin-left:72px;
     border-radius:36px;
-    
+
 }
 
 #catname{
@@ -165,14 +165,14 @@ input::placeholder {
     float:right;
     margin-top:460px;
     margin-right:60px;
-    
+
 }
 
 #nextbtn{
     width:332px;
     height:102px;
-    background-color:rgb(105, 105, 105);
-    color:#FFFFFF;
+    /* background-color:rgb(105, 105, 105);
+    color:#FFFFFF; */
     font-size:40px;
 }
 #nextbtn:disabled{
@@ -212,25 +212,27 @@ input::placeholder {
 
 .container2{
     max-width: 1080px;
+    width:auto;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 130px;
 }
-  
+
 .userfeed{
     width: auto;
     padding-bottom: 300px;
 }
-  
+
 .col-sm{
     display: block;
-  
+
     height: auto;
     /* position: relative; */
     overflow: hidden;
     padding: 34.37% 0 0 0;
 }
-  
+
 .selectImg{
     display: block;
     width: 100%;
@@ -243,24 +245,3 @@ input::placeholder {
     right: 0;
     object-fit: cover;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
