@@ -149,7 +149,7 @@ input::placeholder {
 #nextbtn{
     width:332px;
     height:102px;
-    background-color:#7B7B7B;
-    color:#FFFFFF;
+    /* background-color:#7B7B7B;
+    color:#FFFFFF; */
     font-size:40px;
 }
