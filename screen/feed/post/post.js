@@ -194,21 +194,27 @@ var third="";
 var fourth="\
 </div>\
 "
+if(tag==undefined){
+
+}
+else{
 var li=tag.split("////");
 if(li[0]=="" && li.length==1){
 
 }
 else{
-    for(var i = 0 ; i<li.length;i++){
+for(var i = 0 ; i<li.length;i++){
 var tp="\
 <span class=\"badge badge-pill badge-secondary tag\">\
 <img src=../../../image/icon/tag_small.png>\
 <div class=\"tagname\">"+li[i]+"</div>\
 </span>\
 "
-    third=third+tp;       
+third=third+tp;       
 
-    }
+}
+}
+  
 }
 
 var fs=first+second+third+fourth;

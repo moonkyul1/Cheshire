@@ -25,6 +25,14 @@ $(function() {
         $('#test1').attr('src', "../../../image/picture/"+catName+".png");
         $( "#nextbtn" ).prop( "disabled", false );
     });
+
+    $("#nextbtn").on('click',function(){
+        var cn = $("#catname").val();
+        var hn = $("#homename").val();
+        var ci = $('#test1').attr('src');
+        sessionStorage.setItem('key', cn+'////'+hn+'////'+ci);
+
+    })
     // $("#filename").on('change', function(){
     //     console.log($("#filename").val());
     //     readURL(this);
