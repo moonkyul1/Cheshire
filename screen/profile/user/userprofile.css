@@ -7,6 +7,7 @@ body {
     width:1080px;
     background-color: #F0F0F0;
     font-size: 30px;
+    padding-bottom: 500px;
 }
 
 #div_main{
@@ -95,7 +96,17 @@ body {
   font-weight: bold;
 }
 
-.displaysBtn{
+#logout{
+  float: right;
+  margin-top: 3%;
+  margin-right: 10%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 50%;
+  font-size: 24px;
+}
+
+#charge{
   float: right;
   margin-top: 3%;
   margin-right: 10%;
@@ -103,6 +114,25 @@ body {
   padding-bottom: 24px;
   width: 30%;
   font-size: 24px;
+}
+
+.buttons{
+  width:100%;
+  float: right;
+}
+
+.buttoncol{
+  width: 50%;
+  float: right;
+  text-align: center;
+  line-height: 100%;
+}
+
+.creditText{
+  height: 30%;
+  line-height: 30%;
+  text-align: center;
+  padding-top: 10%;
 }
 
 .container{
@@ -131,7 +161,6 @@ body {
 
 .col-sm{
   display: block;
-
   height: auto;
   position: relative;
   overflow: hidden;

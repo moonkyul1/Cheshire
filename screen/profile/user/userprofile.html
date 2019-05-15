@@ -21,16 +21,22 @@
           <div class="stattext">gifts</div>
           <div class="stattext">total</div>
         </div>
-        <div>
-          <button type="button" id="logout" class="btn btn-primary btn-lg displaysBtn">Log Out</button>
+        <div class="buttons">
+          <div class="buttoncol">
+            <button type="button" id="logout" class="btn btn-secondary btn-lg displaysBtn">Log Out</button>
+          </div>
+          <div class="buttoncol">
+            <button type="button" id="charge" class="btn btn-primary btn-lg displaysBtn">Charge</button>
+            <div class="creditText">
+              <span class="font-weight-bold">Credits:</span> <span id="currentAmountLeft">$50</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <button type="button" id="charge" class="btn btn-primary btn-lg displaysBtn">Credit</button>
-        </div>
+
         <div id="checkerror"></div>
       </div>
       <div id="imgcontainer" class="userfeed container">
-        
+
       </div>
     </div>
     <!-- the top bar stays on top -->
