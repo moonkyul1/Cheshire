@@ -1,6 +1,7 @@
 
 $(function() {
     $("#filename").on('change', function(){
+        console.log($("#filename").val());
         readURL(this);
     });
 });

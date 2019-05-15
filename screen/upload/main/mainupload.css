@@ -151,8 +151,14 @@ input::placeholder {
 }
 
 #test1{
+    width: 100%;
+    height:auto;
+}
+
+#img-box{
     width:100%;
     height:100%;
+    overflow: hidden;
 }
 
 #next{
