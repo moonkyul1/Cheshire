@@ -83,6 +83,19 @@ return feedstring;
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  var postsum=0;
+  function readpostsum() {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/post/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      var keyList = Object.keys(myValue);
+      postsum=keyList.length;
+    });
+  }
+
   function readFromDatabase(num) {
     /*
        Read comments from the database
@@ -129,7 +142,7 @@ return feedstring;
 
   function feedgo(num){
     for(var i = 0 ; i<num; i++){
-      var a= getRandomInt(0,20);
+      var a= getRandomInt(0,postsum);
       readFromDatabase(a);
     }
   }
@@ -142,12 +155,13 @@ return feedstring;
       users=user
       // User is signed in.
       //var imglist=[];
+      readpostsum();
       readcredit(user);
       readFromLike(user,likelist).then(
         function(){
-          feedgo(10);  
+          console.log(postsum);
+          feedgo(10);
         }
-  
       );
     } else {
       alert("no login");
@@ -825,3 +839,7 @@ function datefind(){
   return today;
 }
 var todaydate=datefind();
+
+$('#namingBtn').on('click',function(){
+  alert("you are not a catmom!");
+})
