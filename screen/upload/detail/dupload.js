@@ -94,7 +94,8 @@ function readprofile(catname) {
   return firebase.database().ref('/cat/'+catname+'/').once('value',function(snapshot){
     var myValue = snapshot.val();
     if(myValue==null){
-
+      catprofile="../../../image/assets/catg.png";
+      firstcat(catname);
     }
     else{
       var keyList = Object.keys(myValue);
@@ -186,4 +187,10 @@ function writetouser(user,key){
   newKey.set({
     postnum:key,
   });
+}
+
+function firstcat(catname){
+  firebase.database().ref('/cat/'+catname).set({
+    profile:"../../../image/assets/catg.png"
+  });  
 }
