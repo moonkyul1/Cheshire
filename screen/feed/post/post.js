@@ -296,6 +296,7 @@ return fs;
             console.log("find!" + " " +myValue[currentKey].name);
             $('#feedcontainer').prepend(makemid(myValue[currentKey].byuid,myValue[currentKey].by, myValue[currentKey].tag));
             if(likelist.indexOf(mykey) != -1){
+              console.log("hello");
               $('#feedcontainer').prepend(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
             }
             else{
@@ -347,7 +348,6 @@ return fs;
     
   
 readFromSave();
-readFromDatabase();
 
 
 
@@ -376,6 +376,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     readcredit(user);
     readnickname(user);
     readFromLike(user,likelist);
+    readFromDatabase();
+
   } else {
     usernickname="(imsi)";
   }
