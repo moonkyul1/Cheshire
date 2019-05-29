@@ -143,6 +143,7 @@ function writetopost(usernickname,catprofile,catname,catpicture,catplace,cattag)
     newKey.set({
       by:usernickname,
       byuid:users.uid,
+      likes:0,
       img:catprofile,
       name:catname,
       picture:catpicture,
@@ -156,6 +157,7 @@ function writetopost(usernickname,catprofile,catname,catpicture,catplace,cattag)
     newKey.set({
       by:usernickname,
       byuid:users.uid,
+      likes:0,
       img:catprofile,
       name:catname,
       picture:catpicture,

@@ -138,8 +138,8 @@ function feedmake(keylist,imglist){
         var keyList = Object.keys(myValue);
         for (var i=0;i<keyList.length;i++){
           var currentKey = keyList[i];
-          keylist.push(myValue[currentKey].postnum);
-          imglist.push(myValue[currentKey].postnum);
+          keylist.push(currentKey);
+          imglist.push(currentKey);
         }
       }
 
