@@ -165,7 +165,7 @@ function feedmake(keylist,imglist){
         var keyList = Object.keys(myValue);
         for (var i=0;i<keyList.length;i++){
           var currentKey = keyList[i];
-          if(myValue[currentKey].postnum == did){
+          if(currentKey == did){
             firebase.database().ref('/user/'+users.uid+'/archieve/'+currentKey).remove();
           }
         }
@@ -186,7 +186,7 @@ var users;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     users=user;
-    // User is signed in.
+    //  is signed in.
     //var imglist=[];
     readFromimg(user).then(
       function(){
