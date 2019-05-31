@@ -55,6 +55,11 @@ function like(Obj){
 
  
 function makefeed(img,name,picture,altkey,like,archieve,likenum){
+var fg='<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">'
+if(name=='noname'){
+  fg=''
+}
+
 var feedstring="<div class=\"feed\">\
 <div class=header>\
 <div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
@@ -65,9 +70,9 @@ var feedstring="<div class=\"feed\">\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
 <img id=\"like\" src=../../../image/icon/"+like+" onclick=\"like(this);\">\
-<div id=\"likenum\">"+likenum+" people</div>\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">\
-</div>\
+<div id=\"likenum\">"+likenum+" people</div>"
++fg+
+"</div>\
 </div>";
 return feedstring;
 }
@@ -828,8 +833,53 @@ function namemake(Obj){
   catname=$(Obj).parent().parent().children().children()[1].innerHTML;
 }
 
+var fn=0;
+function findfunding(catname){
+  return firebase.database().ref('/cat/'+catname+'/project').once('value',function(snapshot){
+    var myValue = snapshot.val();
+    if(myValue==null){
+      fn=0;
+    }
+    else{
+      var checknum=0; 
+      var keyList = Object.keys(myValue);
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        if(myValue[currentKey].done==false){
+          if(myValue[currentKey].item=="CAT FOOD"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="BLANKET"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="CAT TOY"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="CAT HOUSE"){
+            checknum=checknum+1;
+          }
+
+        }
+        
+
+      }
+      if(checknum==0){
+        fn=0;
+      }
+      else{
+        fn=1;
+      }
+    }
+  });
+}
+
+
 function readfunding(catname) {
   console.log("hello");
+  $("#col1").css("visibility","hidden");
+  $("#col2").css("visibility","hidden");
+  $("#col3").css("visibility","hidden");
+  $("#col4").css("visibility","hidden");
   /*
      Read comments from the database
      Print all the comments to the table
@@ -840,6 +890,7 @@ function readfunding(catname) {
     
     }
     else{
+      
       var keyList = Object.keys(myValue);
       for (var i=0;i<keyList.length;i++){
         var currentKey = keyList[i];

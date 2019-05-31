@@ -952,6 +952,10 @@ function namemake(Obj){
 
 function readfunding(catname) {
   console.log("hello");
+  $("#col1").css("visibility","hidden");
+  $("#col2").css("visibility","hidden");
+  $("#col3").css("visibility","hidden");
+  $("#col4").css("visibility","hidden");
   /*
      Read comments from the database
      Print all the comments to the table

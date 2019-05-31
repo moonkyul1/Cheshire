@@ -202,3 +202,13 @@ function firstcat(catname){
     profile:"../../../image/assets/catg.png"
   });  
 }
+
+$('#tagname').on("blur",function(){
+  if($('#tagname').val()==''){
+  }
+  else{
+    $('#tags').append(tagmake(tagname.value,170+tagname.value.length*13));
+    taginfo.push(tagname.value);
+    tagname.value='';
+  }
+})
