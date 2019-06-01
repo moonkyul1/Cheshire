@@ -16,7 +16,10 @@ firebase.initializeApp(config);
 var con;
 
 function like(Obj){
+    
     con=Obj;
+    var lnum=$(Obj).parent().children("div");
+    var lnumber=lnum.text().slice(0,-7)*1;
     var img1=$(Obj).attr("src")
     var akey= $(Obj).parent().attr("id");
     var user = firebase.auth().currentUser;
@@ -31,6 +34,9 @@ function like(Obj){
         newKey.set({
           postnum: akey
         });
+    lnumber=lnumber+1;
+    lnum.text(lnumber+" people");
+    
         //del
     }
     else{
@@ -40,40 +46,33 @@ function like(Obj){
         var index=likelist.indexOf(akey);
         likelist.splice(index,1);
         //push
+        lnumber=lnumber-1;
+        lnum.text(lnumber+" people");
     }
+
+    firebase.database().ref("/post/"+akey+"/").update({ likes: lnumber });
 }
 
  
-function makefeed(img,name,picture,altkey){
-var feedstring="<div class=\"feed\">\
-<div class=header>\
-<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
-<div class=\"name\">"+name+"</div>\
-<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
-</div>\
-<div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
-<div class=\"accessory\" id="+altkey+">\
-<img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
-<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);\">\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">\
-</div>\
-</div>";
-return feedstring;
+function makefeed(img,name,picture,altkey,like,archieve,likenum){
+var fg='<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">'
+if(name=='noname'){
+  fg=''
 }
 
-function makelikefeed(img,name,picture,altkey){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
 <div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
-<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
+<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/"+archieve+" onclick=\"picarchive(this);\"></div>\
 </div>\
-<div class=\"content\" id="+altkey+" ><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
+<div class=\"content\" id="+altkey+"><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
 <div class=\"accessory\" id="+altkey+">\
-<img id=\"comment\" src=../../../image/icon/message.png  onclick=\"save(this); location.href=\'../post/post.html\';\">\
-<img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);\">\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">\
-</div>\
+<img id=\"comment\" src=../../../image/icon/message.png>\
+<img id=\"like\" src=../../../image/icon/"+like+" onclick=\"like(this);\">\
+<div id=\"likenum\">"+likenum+" people</div>"
++fg+
+"</div>\
 </div>";
 return feedstring;
 }
@@ -81,6 +80,19 @@ return feedstring;
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var postsum=0;
+  function readpostsum() {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/post/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      var keyList = Object.keys(myValue);
+      postsum=keyList.length;
+    });
   }
 
   function readFromDatabase(num) {
@@ -93,11 +105,27 @@ return feedstring;
       var keyList = Object.keys(myValue);
       for (var i=num;i<num+1;i++){
         var currentKey = keyList[i];
+        var likenumber=0
+        if(myValue[currentKey].likes != undefined){
+          likenumber=myValue[currentKey].likes;
+        }
+
         if(likelist.indexOf(currentKey) != -1){
-          $('#container').append(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture, currentKey));
+          if(archivelist.indexOf(currentKey)!= -1){
+            $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark_selected.png", likenumber));
+          }
+          else{
+            $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark.png", likenumber));
+          }
+          
         }
         else{
-          $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture, currentKey));
+          if(archivelist.indexOf(currentKey)!= -1){
+            $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark_selected.png", likenumber));
+          }
+          else{
+            $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark.png", likenumber));
+          }
         }
         
       }
@@ -125,11 +153,33 @@ return feedstring;
     });
   }
 
+  var archivelist=[]
+  function readFromArchive(user,archivelist) {
+    /*
+      Read comments from the database
+      Print all the comments to the table
+    */
+    return firebase.database().ref('/user/'+user.uid+'/archieve/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      if(myValue == null){
+
+      }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          archivelist.push(currentKey);
+        }
+      }
+      
+    });
+  }
+
 
 
   function feedgo(num){
     for(var i = 0 ; i<num; i++){
-      var a= getRandomInt(0,20);
+      var a= getRandomInt(0,postsum);
       readFromDatabase(a);
     }
   }
@@ -142,12 +192,14 @@ return feedstring;
       users=user
       // User is signed in.
       //var imglist=[];
+      readpostsum();
       readcredit(user);
+      readFromArchive(user,archivelist);
       readFromLike(user,likelist).then(
         function(){
-          feedgo(10);  
+          console.log(postsum);
+          feedgo(10);
         }
-  
       );
     } else {
       alert("no login");
@@ -192,14 +244,30 @@ function find(Obj){
 }
 
 function picarchive(Obj){
+  var img1=$(Obj).attr("src")
+  con=img1;
+  var akey= $(Obj).parent().attr("id");
   var user = firebase.auth().currentUser;
-  var akey= $(Obj).parent().attr("id");
-  //console.log(user.uid);
-  var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/').push();
-  var akey= $(Obj).parent().attr("id");
-  newKey.set({
-    postnum: akey
-  });
+  if(img1.indexOf('_selected')==-1){
+      alertTestFn();
+      img1=img1.replace('.png','_selected.png');
+      $(Obj).attr("src",img1);
+      
+      var akey= $(Obj).parent().attr("id");
+      //console.log(user.uid);
+      var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/'+akey+"/").push();
+      newKey.set({
+        postnum: akey
+      });
+      //del
+  }
+  else{
+      console.log(akey)
+      img1=img1.replace('_selected.png','.png');
+      $(Obj).attr("src",img1)
+      firebase.database().ref('/user/' +user.uid+'/archieve/'+akey+'/').remove();
+      //push
+  }
 }
 
 
@@ -242,10 +310,15 @@ function profiletest(){
 }
 
 function alertTestFn(){
+  $('#to1').css("display","block")
   $('.toast').toast({delay: 700});
   $('.toast').toast('show');
+  setTimeout("toast11()",1000)
 }
 
+function toast11(){
+  $('#to1').css("display","none")
+}
 
 
 
@@ -260,6 +333,10 @@ function writefunding(Obj){
 }
 
 function clickFunding1(catname) {
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog1').attr('value')*1;
   var end1=$('#prog1').attr('max')*1;
   var le=end1-now1;
@@ -322,7 +399,8 @@ function clickFunding1(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT FOOD"
+                      sort: "CAT FOOD",
+                      date:todaydate
                     });
                   }
                 }
@@ -351,7 +429,8 @@ function clickFunding1(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT FOOD"
+                sort: "CAT FOOD",
+                date:todaydate
               });
               
             }
@@ -367,6 +446,11 @@ function clickFunding1(catname) {
 }
 
 function clickFunding2(catname) {
+
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog2').attr('value')*1;
   var end1=$('#prog2').attr('max')*1;
   var le=end1-now1;
@@ -429,7 +513,8 @@ function clickFunding2(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "BLANKET"
+                      sort: "BLANKET",
+                      date:todaydate
                     });
                   }
                 }
@@ -458,7 +543,8 @@ function clickFunding2(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "BLANKET"
+                sort: "BLANKET",
+                date:todaydate
               });
               
             }
@@ -474,6 +560,12 @@ function clickFunding2(catname) {
 }
 
 function clickFunding3(catname) {
+
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
+
   var now1= $('#prog3').attr('value')*1;
   var end1=$('#prog3').attr('max')*1;
   var le=end1-now1;
@@ -536,7 +628,8 @@ function clickFunding3(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT TOY"
+                      sort: "CAT TOY",
+                      date:todaydate
                     });
                   }
                 }
@@ -565,7 +658,8 @@ function clickFunding3(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT TOY"
+                sort: "CAT TOY",
+                date:todaydate
               });
               
             }
@@ -581,6 +675,12 @@ function clickFunding3(catname) {
 }
 
 function clickFunding4(catname) {
+
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
+
   var now1= $('#prog4').attr('value')*1;
   var end1=$('#prog4').attr('max')*1;
   var le=end1-now1;
@@ -643,7 +743,8 @@ function clickFunding4(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT HOUSE"
+                      sort: "CAT HOUSE",
+                      date:todaydate
                     });
                   }
                 }
@@ -672,7 +773,8 @@ function clickFunding4(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT HOUSE"
+                sort: "CAT HOUSE",
+                date:todaydate
               });
               
             }
@@ -731,8 +833,53 @@ function namemake(Obj){
   catname=$(Obj).parent().parent().children().children()[1].innerHTML;
 }
 
+var fn=0;
+function findfunding(catname){
+  return firebase.database().ref('/cat/'+catname+'/project').once('value',function(snapshot){
+    var myValue = snapshot.val();
+    if(myValue==null){
+      fn=0;
+    }
+    else{
+      var checknum=0; 
+      var keyList = Object.keys(myValue);
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        if(myValue[currentKey].done==false){
+          if(myValue[currentKey].item=="CAT FOOD"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="BLANKET"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="CAT TOY"){
+            checknum=checknum+1;
+          }
+          else if(myValue[currentKey].item=="CAT HOUSE"){
+            checknum=checknum+1;
+          }
+
+        }
+        
+
+      }
+      if(checknum==0){
+        fn=0;
+      }
+      else{
+        fn=1;
+      }
+    }
+  });
+}
+
+
 function readfunding(catname) {
   console.log("hello");
+  $("#col1").css("visibility","hidden");
+  $("#col2").css("visibility","hidden");
+  $("#col3").css("visibility","hidden");
+  $("#col4").css("visibility","hidden");
   /*
      Read comments from the database
      Print all the comments to the table
@@ -743,6 +890,7 @@ function readfunding(catname) {
     
     }
     else{
+      
       var keyList = Object.keys(myValue);
       for (var i=0;i<keyList.length;i++){
         var currentKey = keyList[i];
@@ -751,6 +899,10 @@ function readfunding(catname) {
           var total=myValue[currentKey].total;
           if(myValue[currentKey].item=="CAT FOOD"){
             //console.log("1");
+            //$("#msform").css("display","none")
+            if(current!=total){
+              $("#col1").css("visibility","visible")
+            }
             $('#prog1').attr('value',current);
             $('#prog1').attr('max',total);
             $('#cost1').text('$'+total);
@@ -758,6 +910,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="BLANKET"){
             //console.log("2");
+            if(current!=total){
+              $("#col2").css("visibility","visible")
+            }
             $('#prog2').attr('value',current);
             $('#prog2').attr('max',total);
             $('#cost2').text('$'+total);
@@ -765,6 +920,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="CAT TOY"){
             //console.log("3");
+            if(current!=total){
+              $("#col3").css("visibility","visible")
+            }
             $('#prog3').attr('value',current);
             $('#prog3').attr('max',total);
             $('#cost3').text('$'+total);
@@ -772,6 +930,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="CAT HOUSE"){
             //console.log("4");
+            if(current!=total){
+              $("#col4").css("visibility","visible")
+            }
             $('#prog4').attr('value',current);
             $('#prog4').attr('max',total);
             $('#cost4').text('$'+total);
@@ -806,3 +967,18 @@ function JbFunc3() {
 function JbFunc4() {
   clickFunding4(catname);
 }
+
+function datefind(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+}
+var todaydate=datefind();
+
+$('#namingBtn').on('click',function(){
+  alert("you are not a catmom!");
+})

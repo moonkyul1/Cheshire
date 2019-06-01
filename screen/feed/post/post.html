@@ -1,6 +1,7 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -14,7 +15,7 @@
 
         <div id="feedcontainer">
 
-          <div class="w-50 mx-auto toast">
+          <div class="w-50 mx-auto toast" style="display:none" id="to1">
             <div class="toast-header">
                 <strong id="mid" class="mr-auto text-seondary">This post has been archived.</strong>
             </div>
@@ -35,7 +36,7 @@
                 <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                    <div class="col">
+                    <div class="col" id="col1" style="visibility: hidden">
                         <!-- left crowdfunding item -->
                         <div class="row">
                         <div class="col-4">
@@ -66,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col" id="col2" style="visibility: hidden">
                         <!-- right crowdfunding item -->
                         <div class="row">
                         <div class="col-4">
@@ -99,7 +100,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col" id="col3" style="visibility: hidden">
                             <!-- left crowdfunding item -->
                             <div class="row">
                             <div class="col-4">
@@ -130,7 +131,7 @@
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col" id="col4" style="visibility: hidden">
                             <!-- right crowdfunding item -->
                             <div class="row">
                             <div class="col-4">

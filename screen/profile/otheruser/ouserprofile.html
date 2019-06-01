@@ -4,7 +4,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link href="userprofile.css" rel="stylesheet" />
+  <link href="ouserprofile.css" rel="stylesheet" />
   <meta charset="UTF-8">
   <title>Profile</title>
 </head>
@@ -21,17 +21,7 @@
           <div class="stattext">gifts</div>
           <div class="stattext">total</div>
         </div>
-        <div class="buttons">
-          <div class="buttoncol">
-            <button type="button" id="logout" class="btn btn-secondary btn-lg displaysBtn">Log Out</button>
-          </div>
-          <div class="buttoncol">
-            <button type="button" id="charge" class="btn btn-primary btn-lg displaysBtn">Charge</button>
-            <div class="creditText">
-              <span class="font-weight-bold">Credits:</span> <span id="currentAmountLeft">$0</span>
-            </div>
-          </div>
-        </div>
+        
 
         <div id="checkerror"></div>
       </div>
@@ -43,7 +33,6 @@
     <div id="div_main">
       <img id="goBackBtn" src=../../../image/icon/goback.png onclick="history.back()">
       <div id="username" class="name"></div>
-      <img id="archiveBtn" src=../../../image/icon/bookmark.png onclick="location.href='./archive/archive.html'">
     </div>
 
     <div id="footer">
@@ -51,13 +40,13 @@
         <div id="tab" onclick="location.href='../../gift/reward/reward.html'"><img src=../../../image/icon/cf.png></div>
         <div id="tab" onclick="location.href='../../upload/main/mainupload.html'"><img src=../../../image/icon/upload.png></div>
         <div id="tab" onclick="location.href='../../notification/notification.html'"><img src=../../../image/icon/noti.png></div>
-        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile_selected.png></div>
+        <div id="tab" onclick="location.href='../../profile/user/userprofile.html'"><img src=../../../image/icon/profile.png></div>
     </div>
 
   </div>
 
   <script src="../../../jquery/js/jquery-1.9.0.min.js"></script>
   <script src="../../../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script src="./userprofile.js"></script>
+  <script src="./ouserprofile.js"></script>
 
 </body>

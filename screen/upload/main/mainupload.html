@@ -2,7 +2,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="width=1080, user-scalable=no" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="mainupload.css" rel="stylesheet" />
+    <link href="../../../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" /> <link href="mainupload.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Cheshire</title>
 </head>
@@ -91,7 +91,7 @@
 
         <div id="div_main">
             <img id="back" src=../../../image/icon/goback.png onclick="location.href='../../feed/feed/feed.html'">
-            <div id="backname">back</div>
+            <div id="backname">Upload</div>
         </div>
 
         <div id="container">
@@ -100,9 +100,9 @@
                 <input id="homename" type="text" placeholder="Add home">
             </div>
             <div id="addlocation">
-                <button id="loca1">KAIST</button>
-                <button id="loca2">Gung</button>
-                <button id="loca3">Yusunggu</button>
+                <button id="loca1" onclick=locac(this);>KAIST</button>
+                <button id="loca2" onclick=locac(this);>Gung</button>
+                <button id="loca3" onclick=locac(this);>Yusunggu</button>
             </div>
 
             <div id="addcat">

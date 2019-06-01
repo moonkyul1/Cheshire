@@ -36,7 +36,7 @@ $('#charge').click(function(){
     alert("Charged");
     usercredit=usercredit*1+10;
   }
-  firebase.database().ref('/user/'+users.uid+"/funding").set({
+  firebase.database().ref('/user/'+users+"/funding").set({
     cost:usercost,
     credit:usercredit,
     list:userlist,
@@ -123,7 +123,7 @@ var fss="\
         Read comments from the database
         Print all the comments to the table
     */
-    return firebase.database().ref('/user/'+user.uid+'/').once('value',function(snapshot){
+    return firebase.database().ref('/user/'+user+'/').once('value',function(snapshot){
       var myValue = snapshot.val();
       if(myValue==null){
 
@@ -167,7 +167,7 @@ var fss="\
        Read comments from the database
        Print all the comments to the table
     */
-    return firebase.database().ref('/user/'+user.uid+'/post/').once('value',function(snapshot){
+    return firebase.database().ref('/user/'+user+'/post/').once('value',function(snapshot){
       var myValue = snapshot.val();
       if(myValue==null){
         $('#postnum').text('0');
@@ -202,7 +202,7 @@ var userlist;
 
 function readnumcost(user) {
 
-  return firebase.database().ref('/user/'+user.uid+'/funding/').once('value',function(snapshot){
+  return firebase.database().ref('/user/'+user+'/funding/').once('value',function(snapshot){
     var myValue = snapshot.val();
     if(myValue == null){
       $('#num').text('0');
@@ -242,26 +242,21 @@ function readnumcost(user) {
 
   
 var users;
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    users=user;
-    // User is signed in.
-    //var imglist=[];
-    readnumcost(user);
-    readFromDatabase(user);
-    readFromimg(user).then(
-      function(){
-        if(imglist.length != 0){
-          parseImage(imglist).then(function(){
-            $('#imgcontainer').append(feedmake(keylist,imglist));
-          });
-        }
-      }
 
-    );
-  } else {
-    alert("Bye Bye :)");
-    // No user is signed in.
+var user=sessionStorage.getItem('photouid');
+users=user;
+// User is signed in.
+//var imglist=[];
+readnumcost(user);
+readFromDatabase(user);
+readFromimg(user).then(
+  function(){
+    if(imglist.length != 0){
+      parseImage(imglist).then(function(){
+        $('#imgcontainer').append(feedmake(keylist,imglist));
+      });
+    }
   }
-});
 
+);
+  

@@ -5,9 +5,10 @@ body {
 #div_root{
     margin:auto;
     width:1080px;
-    height: 3000px;
+    min-height: 3000px;
     background-color: #F0F0F0;
     font-size: 40px;
+    
 }
 
 .title {
@@ -145,7 +146,8 @@ body {
 #feedcontainer{
     padding-top:160px;
     width:100%;
-    height:2000px;
+    min-height:2000px;
+    padding-bottom:155px;
 }
 
 #footer {

@@ -61,7 +61,39 @@ function readFromfunding(user) {
           
           var cn=myValue[currentKey].catname;
           var cs=myValue[currentKey].sort;
-          $('#feedcontainer').append(makefeed(cn,cs));
+          var cd=myValue[currentKey].date;
+          var ci=ourimage.indexOf(cn)+1;
+          if(cd!=undefined){
+            $('#feedcontainer').append(makefeed(cn,cs,cd,ourimage[ci]));
+          }
+          
+        }
+      }
+      
+      //imglist;
+      //imglist=parseImage(imglist);
+      //console.log("afterimglist is")
+      //console.log(imglist);
+      
+    });
+  }
+  var ourimage=[];
+  function readsumnail(){
+    return firebase.database().ref('/cat/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      if(myValue == null){
+          console.log("hello");
+       
+      }
+      else{
+        var keyList = Object.keys(myValue);
+        for (var i=0;i<keyList.length;i++){
+          var currentKey = keyList[i];
+          
+            ourimage.push(currentKey);
+            ourimage.push(myValue[currentKey].profile);
+          
+          
         }
       }
       
@@ -73,7 +105,8 @@ function readFromfunding(user) {
     });
   }
 
-function makefeed(catname,sort){
+
+function makefeed(catname,sort,date,simage){
 var fs="\
 <div class=\"history_box shadow-sm\">\
 <div class=\"history_title\">\
@@ -92,6 +125,7 @@ for\
 \
 <div class=\"history_cat\">\
 <div class=\"profile\">\
+<img class=\"profile\" src="+simage+">\
 </div>\
 <div class=\"catName\">\
 "+catname+"\
@@ -103,7 +137,7 @@ for\
 on&nbsp\
 </div>\
 <div class=\"date_content\">\
-3rd April 2019.\
+"+date+"\
 </div>\
 </div>\
 \
@@ -127,7 +161,10 @@ firebase.auth().onAuthStateChanged(function(user) {
       // User is signed in.
       //var imglist=[];
       readFromfunding(user);
-      readhistory(user);
+      readsumnail().then(function(){
+        readhistory(user);
+      });
+      
     } else {
       alert("login please");
       // No user is signed in.

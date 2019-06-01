@@ -14,7 +14,7 @@ tagname.addEventListener("keyup", function(event) {
 
 var tp="\
 <div class=\"row comment\">\
-<div class=\"col-sm-3 username\">\
+<div id=\""+ users.uid+"\" class=\"col-sm-3 username\">\
 @"+usernickname+"\
 </div>\
 <div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
@@ -62,6 +62,7 @@ var tp="\
 
 var namelist=[];
 var commentlist=[];
+var uidlist=[];
 
   var config = {
       apiKey: "AIzaSyAqBEOGJ6QCmFO7ff6sP0pVmpJoWgYnl1U",
@@ -87,74 +88,87 @@ var commentlist=[];
   }
 
 
-function like(Obj){
+  function like(Obj){
+    
+    con=Obj;
+    var lnum=$(Obj).parent().children("div");
+    var lnumber=lnum.text().slice(0,-7)*1;
+    var img1=$(Obj).attr("src")
+    var akey= $(Obj).parent().attr("id");
+    var user = firebase.auth().currentUser;
+    if(img1.indexOf('_selected')==-1){
+        img1=img1.replace('.png','_selected.png');
+        $(Obj).attr("src",img1);
+        
+        var akey= $(Obj).parent().attr("id");
+        likelist.push(akey);
+        //console.log(user.uid);
+        var newKey = firebase.database().ref('/user/'+user.uid+'/like/'+akey+"/").push();
+        newKey.set({
+          postnum: akey
+        });
+    lnumber=lnumber+1;
+    lnum.text(lnumber+" people");
+    
+        //del
+    }
+    else{
+        img1=img1.replace('_selected.png','.png');
+        $(Obj).attr("src",img1)
+        firebase.database().ref('/user/' +user.uid+'/like/'+akey+'/').remove();
+        var index=likelist.indexOf(akey);
+        likelist.splice(index,1);
+        //push
+        lnumber=lnumber-1;
+        lnum.text(lnumber+" people");
+    }
+
+    firebase.database().ref("/post/"+akey+"/").update({ likes: lnumber });
+}
+
+function picarchive(Obj){
   var img1=$(Obj).attr("src")
   con=img1;
   var akey= $(Obj).parent().attr("id");
   var user = firebase.auth().currentUser;
   if(img1.indexOf('_selected')==-1){
+      alertTestFn();
       img1=img1.replace('.png','_selected.png');
       $(Obj).attr("src",img1);
       
       var akey= $(Obj).parent().attr("id");
       //console.log(user.uid);
-      var newKey = firebase.database().ref('/user/'+user.uid+'/like/'+akey+"/").push();
+      var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/'+akey+"/").push();
       newKey.set({
         postnum: akey
       });
       //del
   }
   else{
+      console.log(akey)
       img1=img1.replace('_selected.png','.png');
       $(Obj).attr("src",img1)
-      firebase.database().ref('/user/' +user.uid+'/like/'+akey+'/').remove();
+      firebase.database().ref('/user/' +user.uid+'/archieve/'+akey+'/').remove();
       //push
   }
 }
 
-function makefeed(img,name,picture,altkey){
+function makefeed(img,name,picture,altkey,like,archieve,likenum){
 var feedstring="<div class=\"feed\">\
 <div class=header>\
 <div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
 <div class=\"name\">"+name+"</div>\
-<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
+<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/"+archieve+" onclick=\"picarchive(this);\"></div>\
 </div>\
-<div class=\"content\"><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
+<div class=\"content\" id="+altkey+"><img id=\"contentid\" src="+picture+" ></div>\
 <div class=\"accessory\" id="+altkey+">\
 <img id=\"comment\" src=../../../image/icon/message.png>\
-<img id=\"like\" src=../../../image/icon/heart.png onclick=\"like(this);\">\
+<img id=\"like\" src=../../../image/icon/"+like+" onclick=\"like(this);\">\
+<div id=\"likenum\">"+likenum+" people</div>\
 <img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">\
 </div>\
 </div>";
 return feedstring;
-}
-
-function makelikefeed(img,name,picture,altkey){
-var feedstring="<div class=\"feed\">\
-<div class=header>\
-<div class=\"content\" id=cat"+name+" ><img class=\"img\" src="+img+" onclick=\"find(this); location.href=\'../../profile/cat/catprofile.html\';\"></div>\
-<div class=\"name\">"+name+"</div>\
-<div class=\"content\" id="+altkey+" ><img class=\"archive\" src=../../../image/icon/bookmark.png onclick=\"picarchive(this);alertTestFn();\"></div>\
-</div>\
-<div class=\"content\"><img id=\"contentid\" src="+picture+" onclick=\"save(this); location.href=\'../post/post.html\';\"></div>\
-<div class=\"accessory\" id="+altkey+">\
-<img id=\"comment\" src=../../../image/icon/message.png>\
-<img id=\"like\" src=../../../image/icon/heart_selected.png onclick=\"like(this);\">\
-<img id=\"feedgift\" src=../../../image/icon/cf.png onclick=\"modalTestFn();namemake(this);readfunding(catname);\">\
-</div>\
-</div>";
-return feedstring;
-}
-
-function picarchive(Obj){
-  var user = firebase.auth().currentUser;
-  var akey= $(Obj).parent().attr("id");
-  //console.log(user.uid);
-  var newKey = firebase.database().ref('/user/'+user.uid+'/archieve/').push();
-  var akey= $(Obj).parent().attr("id");
-  newKey.set({
-    postnum: akey
-  });
 }
 
 
@@ -169,8 +183,20 @@ function save(Obj){
 
 
 function alertTestFn(){
+  $('#to1').css("display","block")
   $('.toast').toast({delay: 700});
   $('.toast').toast('show');
+  setTimeout("toast11()",1000)
+}
+
+function toast11(){
+  $('#to1').css("display","none")
+}
+
+function goprofile(Obj){
+  var uid= $(Obj).attr("id");
+  sessionStorage.setItem('photouid', uid);
+  location.href='../../profile/otheruser/ouserprofile.html';
 }
 
 
@@ -178,12 +204,10 @@ function alertTestFn(){
 
 
 
-
-
-function makemid(photoby,tag){
+function makemid(uid,photoby,tag){
 var first="\
 <div class=\"tabtitle\">\
-PHOTOGRAPHED BY: <span class=\"username\">"+photoby+"</span>\
+PHOTOGRAPHED BY: <span id=\""+uid+"\" class=\"username\" onclick=goprofile(this);>"+photoby+"</span>\
 </div>\
 ";
 var second="\
@@ -194,21 +218,27 @@ var third="";
 var fourth="\
 </div>\
 "
+if(tag==undefined){
+
+}
+else{
 var li=tag.split("////");
 if(li[0]=="" && li.length==1){
 
 }
 else{
-    for(var i = 0 ; i<li.length;i++){
+for(var i = 0 ; i<li.length;i++){
 var tp="\
 <span class=\"badge badge-pill badge-secondary tag\">\
 <img src=../../../image/icon/tag_small.png>\
 <div class=\"tagname\">"+li[i]+"</div>\
 </span>\
 "
-    third=third+tp;       
+third=third+tp;       
 
-    }
+}
+}
+  
 }
 
 var fs=first+second+third+fourth;
@@ -227,7 +257,7 @@ else{
     for(var i = 0 ; i<commentlist.length;i++){
 var tp="\
 <div class=\"row comment\">\
-<div class=\"col-sm-3 username\">\
+<div id=\""+uidlist[i]+"\" class=\"col-sm-3 username\" onclick=goprofile(this);>\
 "+namelist[i]+"\
 </div>\
 <div class=\"col-sm-9\" style=\"width:100px;word-break:break-all;word-wrap:break-word;\">\
@@ -269,6 +299,27 @@ return fs;
       });
     }
 
+    function readFromArchive(user,archivelist) {
+      /*
+        Read comments from the database
+        Print all the comments to the table
+      */
+      return firebase.database().ref('/user/'+user.uid+'/archieve/').once('value',function(snapshot){
+        var myValue = snapshot.val();
+        if(myValue == null){
+
+        }
+        else{
+          var keyList = Object.keys(myValue);
+          for (var i=0;i<keyList.length;i++){
+            var currentKey = keyList[i];
+            archivelist.push(currentKey);
+          }
+        }
+        
+      });
+    }
+
 
 
     function readFromDatabase() {
@@ -281,14 +332,31 @@ return fs;
         var keyList = Object.keys(myValue);
         for (var i=0;i<keyList.length;i++){
           var currentKey = keyList[i];
+          
           if(currentKey == mykey){
+            var likenumber=0
+            if(myValue[currentKey].likes != undefined){
+              likenumber=myValue[currentKey].likes;
+            }
+
             console.log("find!" + " " +myValue[currentKey].name);
-            $('#feedcontainer').prepend(makemid(myValue[currentKey].by, myValue[currentKey].tag));
+            $('#feedcontainer').prepend(makemid(myValue[currentKey].byuid,myValue[currentKey].by, myValue[currentKey].tag));
             if(likelist.indexOf(mykey) != -1){
-              $('#feedcontainer').prepend(makelikefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
+              if(archivelist.indexOf(mykey)!= -1){
+                $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey,"heart_selected.png","bookmark_selected.png", likenumber));
+              }
+              else{
+                $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey,"heart_selected.png","bookmark.png", likenumber));
+              }
+              
             }
             else{
-              $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey));
+              if(archivelist.indexOf(mykey)!= -1){
+                $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey,"heart.png","bookmark_selected.png", likenumber));
+              }
+              else{
+                $('#feedcontainer').prepend(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,mykey,"heart.png","bookmark.png", likenumber));
+              }
             }
             readFromComment();
             
@@ -314,6 +382,7 @@ return fs;
               var currentKey = keyList[i];
               namelist.push(myValue[currentKey].name);
               commentlist.push(myValue[currentKey].comment);
+              uidlist.push(myValue[currentKey].byuid);
             }
           $('#container').append(makecomment());
           }
@@ -327,6 +396,7 @@ return fs;
           newKey.set({
             //location of dictionary
             name: name,
+            byuid: users.uid,
             comment: comment
           });
         }
@@ -334,7 +404,6 @@ return fs;
     
   
 readFromSave();
-readFromDatabase();
 
 
 
@@ -356,6 +425,7 @@ function readnickname(user) {
 }
 
 var likelist=[]
+var archivelist=[]
 var users;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -363,6 +433,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     readcredit(user);
     readnickname(user);
     readFromLike(user,likelist);
+    readFromArchive(user,archivelist)
+    readFromDatabase();
+
   } else {
     usernickname="(imsi)";
   }
@@ -381,6 +454,10 @@ function writefunding(Obj){
 }
 
 function clickFunding1(catname) {
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog1').attr('value')*1;
   var end1=$('#prog1').attr('max')*1;
   var le=end1-now1;
@@ -443,7 +520,8 @@ function clickFunding1(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT FOOD"
+                      sort: "CAT FOOD",
+                      date:todaydate
                     });
                   }
                 }
@@ -472,7 +550,8 @@ function clickFunding1(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT FOOD"
+                sort: "CAT FOOD",
+                date:todaydate
               });
               
             }
@@ -488,6 +567,10 @@ function clickFunding1(catname) {
 }
 
 function clickFunding2(catname) {
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog2').attr('value')*1;
   var end1=$('#prog2').attr('max')*1;
   var le=end1-now1;
@@ -550,7 +633,8 @@ function clickFunding2(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "BLANKET"
+                      sort: "BLANKET",
+                      date:todaydate
                     });
                   }
                 }
@@ -579,7 +663,8 @@ function clickFunding2(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "BLANKET"
+                sort: "BLANKET",
+                date:todaydate
               });
               
             }
@@ -595,6 +680,10 @@ function clickFunding2(catname) {
 }
 
 function clickFunding3(catname) {
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog3').attr('value')*1;
   var end1=$('#prog3').attr('max')*1;
   var le=end1-now1;
@@ -657,7 +746,8 @@ function clickFunding3(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT TOY"
+                      sort: "CAT TOY",
+                      date:todaydate
                     });
                   }
                 }
@@ -686,7 +776,8 @@ function clickFunding3(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT TOY"
+                sort: "CAT TOY",
+                date:todaydate
               });
               
             }
@@ -702,6 +793,10 @@ function clickFunding3(catname) {
 }
 
 function clickFunding4(catname) {
+  if(usercredit <= 0){
+    alert("now your credit is 0$!\n please charge for donation");
+    return;
+  }
   var now1= $('#prog4').attr('value')*1;
   var end1=$('#prog4').attr('max')*1;
   var le=end1-now1;
@@ -764,7 +859,8 @@ function clickFunding4(catname) {
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
-                      sort: "CAT HOUSE"
+                      sort: "CAT HOUSE",
+                      date:todaydate
                     });
                   }
                 }
@@ -793,7 +889,8 @@ function clickFunding4(catname) {
               
               newKey.set({
                 catname: catname,
-                sort: "CAT HOUSE"
+                sort: "CAT HOUSE",
+                date:todaydate
               });
               
             }
@@ -855,6 +952,10 @@ function namemake(Obj){
 
 function readfunding(catname) {
   console.log("hello");
+  $("#col1").css("visibility","hidden");
+  $("#col2").css("visibility","hidden");
+  $("#col3").css("visibility","hidden");
+  $("#col4").css("visibility","hidden");
   /*
      Read comments from the database
      Print all the comments to the table
@@ -873,6 +974,9 @@ function readfunding(catname) {
           var total=myValue[currentKey].total;
           if(myValue[currentKey].item=="CAT FOOD"){
             //console.log("1");
+            if(current!=total){
+              $("#col1").css("visibility","visible")
+            }
             $('#prog1').attr('value',current);
             $('#prog1').attr('max',total);
             $('#cost1').text('$'+total);
@@ -880,6 +984,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="BLANKET"){
             //console.log("2");
+            if(current!=total){
+              $("#col2").css("visibility","visible")
+            }
             $('#prog2').attr('value',current);
             $('#prog2').attr('max',total);
             $('#cost2').text('$'+total);
@@ -887,6 +994,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="CAT TOY"){
             //console.log("3");
+            if(current!=total){
+              $("#col3").css("visibility","visible")
+            }
             $('#prog3').attr('value',current);
             $('#prog3').attr('max',total);
             $('#cost3').text('$'+total);
@@ -894,6 +1004,9 @@ function readfunding(catname) {
           }
           else if(myValue[currentKey].item=="CAT HOUSE"){
             //console.log("4");
+            if(current!=total){
+              $("#col4").css("visibility","visible")
+            }
             $('#prog4').attr('value',current);
             $('#prog4').attr('max',total);
             $('#cost4').text('$'+total);
@@ -937,3 +1050,14 @@ function find(Obj){
     key: akey
   });  
 }
+
+function datefind(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+}
+var todaydate=datefind();
