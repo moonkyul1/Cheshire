@@ -353,6 +353,7 @@ function clickFunding1(catname) {
       
     }
     alert("Confirmed.\nleft credit:" +usercredit);
+    $('.underreward').attr('src',"../../../image/icon/cf_alert.png");
     var a = document.getElementById( 'prog1' ).value;
     document.getElementById( 'prog1' ).value = a*1 + 1;
   
@@ -397,6 +398,7 @@ function clickFunding1(catname) {
                 var um=saves.split('////');
                 for(var i = 0 ; i<um.length;i++){
                   if(um[i] != ""){
+                    $('.undernoti').attr('src',"../../../image/icon/notif_alert.png");
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
@@ -467,6 +469,7 @@ function clickFunding2(catname) {
       
     }
     alert("Confirmed.\nleft credit:" +usercredit);
+    $('.underreward').attr('src',"../../../image/icon/cf_alert.png");
     var a = document.getElementById( 'prog2' ).value;
     document.getElementById( 'prog2' ).value = a*1 + 1;
   
@@ -511,6 +514,7 @@ function clickFunding2(catname) {
                 var um=saves.split('////');
                 for(var i = 0 ; i<um.length;i++){
                   if(um[i] != ""){
+                    $('.undernoti').attr('src',"../../../image/icon/notif_alert.png");
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
@@ -582,6 +586,7 @@ function clickFunding3(catname) {
       
     }
     alert("Confirmed.\nleft credit:" +usercredit);
+    $('.underreward').attr('src',"../../../image/icon/cf_alert.png");
     var a = document.getElementById( 'prog3' ).value;
     document.getElementById( 'prog3' ).value = a*1 + 1;
   
@@ -626,6 +631,7 @@ function clickFunding3(catname) {
                 var um=saves.split('////');
                 for(var i = 0 ; i<um.length;i++){
                   if(um[i] != ""){
+                    $('.undernoti').attr('src',"../../../image/icon/notif_alert.png");
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,
@@ -697,6 +703,7 @@ function clickFunding4(catname) {
       
     }
     alert("Confirmed.\nleft credit:" +usercredit);
+    $('.underreward').attr('src',"../../../image/icon/cf_alert.png");
     var a = document.getElementById( 'prog4' ).value;
     document.getElementById( 'prog4' ).value = a*1 + 1;
   
@@ -741,6 +748,7 @@ function clickFunding4(catname) {
                 var um=saves.split('////');
                 for(var i = 0 ; i<um.length;i++){
                   if(um[i] != ""){
+                    $('.undernoti').attr('src',"../../../image/icon/notif_alert.png");
                     var newKey = firebase.database().ref('/user/'+um[i]+'/notification/').push();              
                     newKey.set({
                       catname: catname,

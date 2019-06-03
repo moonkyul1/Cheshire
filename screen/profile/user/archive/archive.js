@@ -43,17 +43,17 @@ function feedmake(keylist,imglist){
   <div class=\"row no-gutters\">\
   <div class=\"col-sm\">\
   <a href=\"#\" >\
-  <div id="+keylist[i]+" class=\"addhere\"><img src="+"../"+imglist[i] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <div id="+keylist[i*3]+" class=\"addhere\"><img src="+"../"+imglist[i*3] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
   <a href=\"#\" >\
-  <div id="+keylist[i+1]+" class=\"addhere\"><img src="+"../"+imglist[i+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <div id="+keylist[i*3+1]+" class=\"addhere\"><img src="+"../"+imglist[i*3+1] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   <div class=\"col-sm\">\
   <a href=\"#\" >\
-  <div id="+keylist[i+2]+" class=\"addhere\"><img src="+"../"+imglist[i+2] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
+  <div id="+keylist[i*3+2]+" class=\"addhere\"><img src="+"../"+imglist[i*3+2] +" class=\"feedImg\" onclick=\"check(this)\"></div>\
   </a>\
   </div>\
   </div>\
@@ -73,6 +73,7 @@ function feedmake(keylist,imglist){
   <div class=\"col-sm\">\
   <a href=\"#\" >\
   </a>\
+  </div>\
   <div class=\"col-sm\">\
   <a href=\"#\" >\
   </a>\
@@ -192,6 +193,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       function(){
         if(imglist.length!=0){
           parseImage(imglist).then(function(){
+            imglist.reverse();
+            keylist.reverse();
             $('#imgcontainer').append(feedmake(keylist,imglist));
           });
         }

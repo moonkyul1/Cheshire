@@ -57,17 +57,17 @@ var fs="\
 <div class=\"row no-gutters\">\
 <div class=\"col-sm\">\
 <a href=\"#\">\
-<div id="+keylist[i]+"><img src="+imglist[i] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+<div id="+keylist[i*3]+"><img src="+imglist[i*3] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
 </a>\
 </div>\
 <div class=\"col-sm\">\
 <a href=\"#\">\
-<div id="+keylist[i+1]+"><img src="+imglist[i+1] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+<div id="+keylist[i*3+1]+"><img src="+imglist[i*3+1] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
 </a>\
 </div>\
 <div class=\"col-sm\">\
 <a href=\"#\">\
-<div id="+keylist[i+2]+"><img src="+imglist[i+2] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
+<div id="+keylist[i*3+2]+"><img src="+imglist[i*3+2] +" class=\"feedImg\" onclick=\"save(this); location.href=\'../../feed/post/post.html\';\"></div>\
 </a>\
 </div>\
 </div>\
@@ -87,6 +87,7 @@ var fss="\
 <div class=\"col-sm\">\
 <a href=\"#\">\
 </a>\
+</div>\
 <div class=\"col-sm\">\
 <a href=\"#\">\
 </a>\
@@ -253,6 +254,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       function(){
         if(imglist.length != 0){
           parseImage(imglist).then(function(){
+            imglist.reverse();
+            keylist.reverse();
             $('#imgcontainer').append(feedmake(keylist,imglist));
           });
         }
