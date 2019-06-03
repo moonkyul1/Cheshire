@@ -46,8 +46,47 @@
     height:72px;
 }
 
+#tabmenu{
+    padding-top:165px;
+    background-color:#F0F0F0;
+}
+
+
+
+#tabplace{
+    background-color:#FFFFFF;
+    outline:0;
+    width: 360px;
+    height : 80px;
+    float: left;
+    border:0;
+    border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
+    border-image-slice: 1;
+}
+#tabnames{
+    background-color:#FFFFFF;
+    outline:0;
+    width: 360px;
+    height : 80px;
+    float: left;
+    border:0;
+    border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
+    border-image-slice: 1;
+}
+#tabtag{
+    background-color:#FFFFFF;
+    outline:0;
+    width: 360px;
+    height : 80px;
+    float: left;
+    border:0;
+    border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
+    border-image-slice: 1;
+}
+
+
 #container{
-    padding-top:155px;
+    padding-top:80px;
     padding-bottom:155px;
     width:100%;
     background-color: #F0F0F0;

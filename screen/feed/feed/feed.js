@@ -199,6 +199,7 @@ return feedstring;
         function(){
           console.log(postsum);
           feedgo(10);
+          findfirst();
         }
       );
     } else {
@@ -980,5 +981,48 @@ function datefind(){
 var todaydate=datefind();
 
 $('#namingBtn').on('click',function(){
-  alert("you are not a catmom!");
+  alert("In naming center, you can make cat's name");
 })
+
+function findfirst(){
+  if(sessionStorage.getItem('first') == null || sessionStorage.getItem('first') == "null" || sessionStorage.getItem('first') == undefined){
+
+  }
+  else{
+    return firebase.database().ref('/post/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      var keyList = Object.keys(myValue);
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        var likenumber=0
+        if(currentKey != sessionStorage.getItem('first')){
+
+        }
+        else{
+          if(myValue[currentKey].likes != undefined){
+            likenumber=myValue[currentKey].likes;
+          }
+  
+          if(likelist.indexOf(currentKey) != -1){
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark.png", likenumber));
+            }
+            
+          }
+          else{
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark.png", likenumber));
+            }
+          }
+          sessionStorage.setItem('first',null);
+        }
+      }
+    });
+  }
+}

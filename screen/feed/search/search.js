@@ -90,7 +90,22 @@ var feedstring="<div class=\"feed\">\
 return feedstring;
 }
 
-  function readFromDatabase() {
+  function readFromDatabase(){
+    if(tab == 1){
+      readFromDatabase1();
+    }
+    else if(tab==2){
+      readFromDatabase2();
+    }
+    else if(tab==3){
+      readFromDatabase3();
+    }
+    else{
+      readFromDatabase1();
+    }
+  }
+
+  function readFromDatabase1() {
     /*
        Read comments from the database
        Print all the comments to the table
@@ -101,7 +116,85 @@ return feedstring;
       var inputValue = $('#searchInput').val();
       for (var i=0;i<keyList.length;i++){
         var currentKey = keyList[i];
-        if(myValue[currentKey].name == inputValue){
+        if(myValue[currentKey].name.toUpperCase() == inputValue.toUpperCase()){
+          var likenumber=0
+          if(myValue[currentKey].likes != undefined){
+            likenumber=myValue[currentKey].likes;
+          }
+  
+          if(likelist.indexOf(currentKey) != -1){
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark.png", likenumber));
+            }
+            
+          }
+          else{
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark.png", likenumber));
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function readFromDatabase2() {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/post/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      var keyList = Object.keys(myValue);
+      var inputValue = $('#searchInput').val();
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        if(myValue[currentKey].place.toUpperCase().indexOf(inputValue.toUpperCase()) != -1){
+          var likenumber=0
+          if(myValue[currentKey].likes != undefined){
+            likenumber=myValue[currentKey].likes;
+          }
+  
+          if(likelist.indexOf(currentKey) != -1){
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart_selected.png","bookmark.png", likenumber));
+            }
+            
+          }
+          else{
+            if(archivelist.indexOf(currentKey)!= -1){
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark_selected.png", likenumber));
+            }
+            else{
+              $('#container').append(makefeed(myValue[currentKey].img, myValue[currentKey].name, myValue[currentKey].picture,currentKey,"heart.png","bookmark.png", likenumber));
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function readFromDatabase3() {
+    /*
+       Read comments from the database
+       Print all the comments to the table
+    */
+    return firebase.database().ref('/post/').once('value',function(snapshot){
+      var myValue = snapshot.val();
+      var keyList = Object.keys(myValue);
+      var inputValue = $('#searchInput').val();
+      for (var i=0;i<keyList.length;i++){
+        var currentKey = keyList[i];
+        if(myValue[currentKey].tag.toUpperCase().indexOf(inputValue.toUpperCase()) != -1){
           var likenumber=0
           if(myValue[currentKey].likes != undefined){
             likenumber=myValue[currentKey].likes;
@@ -858,3 +951,27 @@ function datefind(){
   return today;
 }
 var todaydate=datefind();
+
+
+var tab=1;
+$('#tabnames').css('border-bottom', 'solid');
+$('#tabnames').on('click',function(){
+  tab=1
+  $('#tabnames').css('border-bottom', 'solid');
+  $('#tabplace').css('border-bottom', 0);
+  $('#tabtag').css('border-bottom', 0);
+});
+
+$('#tabplace').on('click',function(){
+  tab=2
+  $('#tabnames').css('border-bottom', 0);
+  $('#tabplace').css('border-bottom', 'solid');
+  $('#tabtag').css('border-bottom', 0);
+});
+
+$('#tabtag').on('click',function(){
+  tab=3
+  $('#tabnames').css('border-bottom', 0);
+  $('#tabplace').css('border-bottom', 0);
+  $('#tabtag').css('border-bottom', 'solid');
+});

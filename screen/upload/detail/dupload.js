@@ -81,10 +81,10 @@ $('#nextbtn').on('click',function(){
       writetocat(catname,catpicture,key.key);
       writetouser(user,key.key);
       }).then(function(){
+        sessionStorage.setItem('first',key.key);
         location.href='../../feed/feed/feed.html';
       });
   });
-  
   
 });
 
@@ -134,6 +134,7 @@ function readnickname(user) {
     }
   });
 }
+
 var key;
 function writetopost(usernickname,catprofile,catname,catpicture,catplace,cattag){
   if(cattag==''){
