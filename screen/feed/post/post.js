@@ -229,7 +229,7 @@ if(li[0]=="" && li.length==1){
 else{
 for(var i = 0 ; i<li.length;i++){
 var tp="\
-<span class=\"badge badge-pill badge-secondary tag\">\
+<span class=\"badge badge-pill badge-secondary tag\" onclick=tagfind(\""+li[i]+"\");>\
 <img src=../../../image/icon/tag_small.png>\
 <div class=\"tagname\">"+li[i]+"</div>\
 </span>\
@@ -1061,3 +1061,8 @@ function datefind(){
   return today;
 }
 var todaydate=datefind();
+
+function tagfind(tn){
+  location.href='../search/search.html';
+  sessionStorage.setItem('second',tn);
+}

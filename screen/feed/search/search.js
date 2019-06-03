@@ -975,3 +975,13 @@ $('#tabtag').on('click',function(){
   $('#tabplace').css('border-bottom', 0);
   $('#tabtag').css('border-bottom', 'solid');
 });
+
+if(sessionStorage.getItem('second') == null || sessionStorage.getItem('second') == "null" || sessionStorage.getItem('second') == undefined){
+
+}
+else{
+  $('#searchInput').val(sessionStorage.getItem('second'));
+  $('#tabtag').trigger('click');
+  $('#searchBtn').trigger('click');
+  sessionStorage.setItem('second',null);
+}
