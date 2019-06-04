@@ -375,6 +375,9 @@ function clickFunding1(catname) {
           if(myValue[currentKey].item=="CAT FOOD"){
             if(myValue[currentKey].done==false){
               var saves=myValue[currentKey].by;
+              if(myValue[currentKey].by==undefined){
+                myValue[currentKey].by='';
+              }
               if(myValue[currentKey].by.includes(users.uid)){
                 
               }
@@ -491,6 +494,9 @@ function clickFunding2(catname) {
           if(myValue[currentKey].item=="BLANKET"){
             if(myValue[currentKey].done==false){
               var saves=myValue[currentKey].by;
+              if(myValue[currentKey].by==undefined){
+                myValue[currentKey].by='';
+              }
               if(myValue[currentKey].by.includes(users.uid)){
                 
               }
@@ -608,6 +614,9 @@ function clickFunding3(catname) {
           if(myValue[currentKey].item=="CAT TOY"){
             if(myValue[currentKey].done==false){
               var saves=myValue[currentKey].by;
+              if(myValue[currentKey].by==undefined){
+                myValue[currentKey].by='';
+              }
               if(myValue[currentKey].by.includes(users.uid)){
                 
               }
@@ -725,6 +734,9 @@ function clickFunding4(catname) {
           if(myValue[currentKey].item=="CAT HOUSE"){
             if(myValue[currentKey].done==false){
               var saves=myValue[currentKey].by;
+              if(myValue[currentKey].by==undefined){
+                myValue[currentKey].by='';
+              }
               if(myValue[currentKey].by.includes(users.uid)){
                 
               }
