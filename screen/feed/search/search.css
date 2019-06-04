@@ -57,7 +57,8 @@
     background-color:#FFFFFF;
     outline:0;
     width: 360px;
-    height : 80px;
+    height : 160px;
+    font-size:40px;
     float: left;
     border:0;
     border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
@@ -67,7 +68,8 @@
     background-color:#FFFFFF;
     outline:0;
     width: 360px;
-    height : 80px;
+    height : 160px;
+    font-size:40px;
     float: left;
     border:0;
     border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
@@ -77,7 +79,8 @@
     background-color:#FFFFFF;
     outline:0;
     width: 360px;
-    height : 80px;
+    height : 160px;
+    font-size:40px;
     float: left;
     border:0;
     border-image: linear-gradient(to right, #46E9C8 0%, #D238FF 35%, #FEA22A 100%);
