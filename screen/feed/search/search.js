@@ -155,6 +155,9 @@ return feedstring;
       var inputValue = $('#searchInput').val();
       for (var i=0;i<keyList.length;i++){
         var currentKey = keyList[i];
+        if(myValue[currentKey].place == undefined){
+          myValue[currentKey].place='';
+        }
         if(myValue[currentKey].place.toUpperCase().indexOf(inputValue.toUpperCase()) != -1){
           var likenumber=0
           if(myValue[currentKey].likes != undefined){
@@ -194,6 +197,9 @@ return feedstring;
       var inputValue = $('#searchInput').val();
       for (var i=0;i<keyList.length;i++){
         var currentKey = keyList[i];
+        if(myValue[currentKey].tag == undefined){
+          myValue[currentKey].tag='';
+        }
         if(myValue[currentKey].tag.toUpperCase().indexOf(inputValue.toUpperCase()) != -1){
           var likenumber=0
           if(myValue[currentKey].likes != undefined){
