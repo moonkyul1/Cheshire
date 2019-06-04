@@ -967,9 +967,11 @@ var todaydate=datefind();
 
 var tab=1;
 $('#tabnames').css('border-bottom', 'solid');
+$('#tabnames').css('border-bottom-width', '10px');
 $('#tabnames').on('click',function(){
   tab=1
   $('#tabnames').css('border-bottom', 'solid');
+  $('#tabnames').css('border-bottom-width', '10px');
   $('#tabplace').css('border-bottom', 0);
   $('#tabtag').css('border-bottom', 0);
 });
@@ -978,6 +980,7 @@ $('#tabplace').on('click',function(){
   tab=2
   $('#tabnames').css('border-bottom', 0);
   $('#tabplace').css('border-bottom', 'solid');
+  $('#tabplace').css('border-bottom-width', '10px');
   $('#tabtag').css('border-bottom', 0);
 });
 
@@ -986,6 +989,7 @@ $('#tabtag').on('click',function(){
   $('#tabnames').css('border-bottom', 0);
   $('#tabplace').css('border-bottom', 0);
   $('#tabtag').css('border-bottom', 'solid');
+  $('#tabtag').css('border-bottom-width', '10px');
 });
 
 if(sessionStorage.getItem('second') == null || sessionStorage.getItem('second') == "null" || sessionStorage.getItem('second') == undefined){
